@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+            window.onload = oppstart;
+
+            function oppstart(){
+                document.getElementById("bekreft").onclick = bekreft;
+
+                function bekreft(){
+                    document.getElementById("utskrift").innerHTML = "";
+
+
+                    var ukedag = parseInt(document.getElementById("ukedag").value);
+                    var dagerinput = parseInt(document.getElementById("dagerinput").value)
+                    var ukedagteller = 1;
+                    var dagteller = 1;
+                    var fastteller = 0;
+                    var forstedag = true;
+
+
+                    while(dagteller < dagerinput ){
+                            while(ukedagteller <= ukedag){
+                                if(forstedag === true){
+                                    forstedag = false;
+                                    ukedagteller ++;
+                                    fastteller ++;
+                                }else{
+                                    document.getElementById("utskrift").innerHTML += "\xa0\xa0\xa0\xa0";
+                                    ukedagteller ++;
+                                    fastteller ++;
+                                }
+                            }
+                           /// \n fungerer ikke !!! man må bruke <br> av en snååål grunn
+                            while(dagteller <= dagerinput){
+                                if(dagteller < 10){
+                                    if(fastteller%7=== 0){
+                                        document.getElementById("utskrift").innerHTML += dagteller + "\xa0\xa0";
+                                        document.getElementById("utskrift").innerHTML += "<br>";
+                                        dagteller ++;
+                                        fastteller ++;
+                                    } else {
+                                        document.getElementById("utskrift").innerHTML += dagteller + "\xa0\xa0\xa0";
+                                        dagteller ++;
+                                        fastteller ++;
+                                    }
+                                } else{
+                                    if(fastteller%7=== 0){
+                                        document.getElementById("utskrift").innerHTML += dagteller + "\xa0\xa0";
+                                        document.getElementById("utskrift").innerHTML += "<br>";
+                                        dagteller ++;
+                                        fastteller ++;
+                                    } else {
+                                        document.getElementById("utskrift").innerHTML += dagteller + "\xa0\xa0";
+                                        dagteller ++;
+                                        fastteller ++;
+                                    }
+                                }
+
+                            }
+
+                    }
+
+
+                }
+
+
+            }
+    </script>
+    <style>
+        #utskrift, #utskriftover{
+            font-family: Courier New,Courier;
+        }
+    </style>
+</head>
+<body>
+    Måneden starter en <select value="1" id="ukedag">
+        <option value="1">Mandag</option>
+        <option value="2">Tirsdag</option>
+        <option value="3">Onsdag</option>
+        <option value="4">Torsdag</option>
+        <option value="5">Fredag</option>
+        <option value="6">Lørdag</option>
+        <option value="7">Søndag</option>
+    </select>
+
+    Anntall dager i måneden<input id="dagerinput" value="30" type="number">
+
+    <button id="bekreft">Bekreft</button>
+
+    <p id="utskriftover">man  tir  ons  tor  fre  lør  søn</p>
+    <p id="utskrift"></p>
+    <p id="utskrift"></p>
+
+</body>
+</html>

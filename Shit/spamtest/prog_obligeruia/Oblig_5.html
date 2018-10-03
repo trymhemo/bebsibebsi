@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oblig5</title>
+</head>
+<body>
+<script>
+    del1_1();
+    del1_2();
+    del2();
+    del3();
+    del4();
+    del5();
+    function del1_1() {
+        console.log("-------------------------- Oblig 5 del 1 --------------------------");
+        var tillogg1 = "";
+        var teltil = 10;
+        for (var counter = 1 ; counter <= teltil ; counter++) {
+            tillogg1 += counter + " "
+        }
+        console.log(tillogg1);
+
+    }
+
+    function del1_2() {
+        var tillogg2 = "";
+        var telnedtil = 1;
+        for (var counter = 10 ; counter >= telnedtil ; counter--) {
+            tillogg2 += counter + " ";
+
+        }
+        console.log(tillogg2);
+        console.log("-------------------------- end ----------------------------\n ");
+    }
+    function del35() {
+        var counter = 0;
+        var randomnr1 =  Math.floor(Math.random() * 60) + 1;
+
+        while (randomnr1 != randomnr2 ) {
+            var randomnr2 =  Math.floor(Math.random() * 60) + 1;
+            counter ++
+
+        }
+        console.log(counter + randomnr1.toString() + randomnr2.toString());
+    }
+    function del2() {
+        console.log("-------------------------- Oblig 5 del 2--------------------------");
+        var randomnr1 =  Math.floor(Math.random() * 60) + 1;
+
+        while (randomnr1 != randomnr2 ) {
+            var randomnr2 =  Math.floor(Math.random() * 60) + 1;
+
+        }
+        console.log("Tallet var: " + randomnr1);
+        console.log("-------------------------- end ----------------------------\n ");
+    }
+    function del3() {
+        console.log("-------------------------- Oblig 5 del3 --------------------------");
+        var counter = 0;
+        var randomnr1 =  Math.floor(Math.random() * 1000000) + 1;
+        var tidstart = Date.now();
+        
+
+        while (randomnr1 != randomnr2 ) {
+            var randomnr2 =  Math.floor(Math.random() * 1000000) + 1;
+            counter ++;
+            var tidslutt = Date.now()
+
+        }
+        console.log("Det tok maskinen " + counter + " forsøk og " + (tidslutt-tidstart) + " millisekunder å gjette tallet = " + randomnr1);
+        console.log("-------------------------- end ----------------------------\n ");
+    }
+
+
+
+    function del5 () {
+        console.log("-------------------------- Oblig 5 del 5 --------------------------");
+        var rader =  7;
+
+    for (var i2 = 1; i2 <= rader; i2++){
+        var fullrad = " ";
+        var k1 = "K" + i2 +",";
+
+        var kolonner = 9;
+        for (var i = 1; i <= kolonner; i++) {
+
+
+            fullrad += k1 + "R" + i + " ";
+        }
+    console.log(fullrad)
+    }
+        console.log("-------------------------- end ----------------------------\n ");
+    }
+    function del4() {
+        console.log("-------------------------- Oblig 5 del 4 --------------------------");
+        var primtall = " ";
+        for (var counter = 1; counter <= 200; counter++) {
+
+            var ikkeprim = false;
+            for (var i = 2; i <= counter; i++) {
+                if (counter%i === 0 && i !== counter) {
+                    ikkeprim = true;
+                }
+            }
+            if (ikkeprim === false) {
+                primtall += counter + " ";
+            }
+        }
+        console.log(primtall);
+        console.log("-------------------------- end ----------------------------\n ");
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblig 11</title>
+</head>
+<body>
+<canvas id="canvas" width="720" height="512"></canvas>
+<script>
+         //-------------------------------------------------------------------------------------
+         //------ Classes ----------------------------------------------------------------------
+         //-------------------------------------------------------------------------------------
+
+         var GameObjectType = {
+               Hero: 1,
+               Obstacle: 2
+         };
+
+         function TRect(posX,posY,width,height){
+               this.left = posX;
+               this.top = posY;
+               this.width = width;
+               this.height = height;
+               this.right = this.left + this.width;
+               this.bottom = this.top + this.height;
+
+               this.move = function(addX,addY){
+                     this.left += addX;
+                     this.top += addY;
+                     this.bottom = this.top + this.height;
+                     this.right = this.left + this.width;
+                   };
+
+               this.hit = function(other){
+                     return !((this.bottom < other.top) || (this.top > other.bottom) || (this.right < other.left) || (this.left > other.right));
+                   }
+             }
+
+
+         function TGame(){
+
+               this.hero = new TGameObject(new TRect(100,50,30,30),"Purple",GameObjectType.Hero);
+               this.obstacles = [];
+               this.gameOver = false;
+
+
+               this.gameScore = {
+                   score: 0,
+                   rect: new TRect(600,30,50,100),
+                   draw: function(){
+                   ctx.fillStyle = "white";
+
+                   ctx.font="35px Georgia";
+                   ctx.fillText(this.score.toString(), this.rect.left+20,this.rect.top+40);
+
+                   ctx.fillText("score: " ,this.rect.left,this.rect.top);
+
+                   }
+               };
+
+
+
+               this.createObstacle = function(){
+                   var length = getRandom(50,200);
+                   var gap = getRandom(50,150);
+                   var rest = canvas.width - (gap + length);
+
+                     var newObstacle = new TGameObject(new TRect(canvas.width, 0,10, length),"White",GameObjectType.Obstacle);
+                     this.obstacles.push(newObstacle);
+
+                   newObstacle = new TGameObject(new TRect(canvas.width, length+gap,10,rest),"White",GameObjectType.Obstacle);
+                   this.obstacles.push(newObstacle);
+                   };
+
+
+               this.update = function () {
+                     if(this.hero.hitBottom() && (this.hero.speed.y>0) ) {
+
+                         tellUserGameIsOver = true;
+                         clearInterval(interval);
+                         alert("Game Over");
+
+                           this.hero.speed.y = 0;
+                           this.hero.gravity = 0;
+                         }
+                     if(this.gameOver === false) {
+                         this.hero.move();
+                     }
+                     this.hero.draw();
+
+
+
+                     for(var index = 0; index < this.obstacles.length; index++){
+                           if(this.hero.rect.hit(this.obstacles[index].rect)){
+                                 this.gameOver = true;
+                                 this.obstacles[index].color = "red"
+                               }
+                           if(this.gameOver === false){
+                               this.obstacles[index].move();}
+                           this.obstacles[index].draw();
+                         }
+                   this.gameScore.draw();
+
+                   };
+             }
+
+
+         function TGameObject(rect, color,type){
+               this.rect = rect;
+               this.color = color;
+               this.type = type;
+               this.speed = {x: 0,y: 0};
+               this.gravity = 0;
+               if(this.type === GameObjectType.Hero){
+                     this.speed.y = 1;
+                     this.gravity = 0.025;
+                   }else{
+                     this.speed.x = -1;
+                   }
+
+               this.draw = function () {
+                     ctx.fillStyle = this.color;
+                     ctx.fillRect(this.rect.left, this.rect.top, this.rect.width, this.rect.height);
+                   };
+
+               this.move = function(){
+                    this.speed.y = this.speed.y + this.gravity;
+                    this.rect.move(this.speed.x,this.speed.y);
+                  };
+
+              this.hitBottom = function(){
+                    if (this.rect.bottom > canvas.height) {
+
+                        return true
+                    }
+                    else if(this.rect.top < 0){
+                        return true
+                    }
+                  };
+            }
+
+        //-------------------------------------------------------------------------------------
+        //------ Global Variables -------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
+        var canvas = null;
+        var ctx = null;
+        var canvasFrame = null;
+        var game = null;
+        var interval = null;
+        var frameNo = 1;
+        var tellUserGameIsOver = false;
+
+        //-------------------------------------------------------------------------------------
+        //------ Main code --------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
+        window.onload = function() {
+              canvas = document.getElementById("canvas");
+              ctx = canvas.getContext('2d');
+              canvasFrame = new TRect(0,0,canvas.width,canvas.height);
+              window.addEventListener("keydown",windowKeyDown,false);
+              window.addEventListener("keyup",windowKeyUp,false);
+              game = new TGame();
+              interval = setInterval(updateCanvas,20);
+              //updateCanvas();
+            };
+
+        //-------------------------------------------------------------------------------------
+        //------ Functions --------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
+
+         function getRandom(min , max){
+             return Math.ceil(Math.random()*(max-min))+ min;
+         }
+
+        function updateCanvas(){
+
+            if((game.gameOver === true) && (tellUserGameIsOver === false)){
+                tellUserGameIsOver = true;
+                clearInterval(interval);
+                alert("Game Over");
+            }
+
+              ctx.clearRect(canvasFrame.left,canvasFrame.top,canvasFrame.width,canvasFrame.height);
+              ctx.fillStyle="grey";
+              ctx.fillRect(canvasFrame.left,canvasFrame.top,canvasFrame.width,canvasFrame.height);
+              ctx.strokeStyle = "black";
+              ctx.lineWidth = 10;
+              ctx.beginPath();
+              ctx.rect(canvasFrame.left,canvasFrame.top,canvasFrame.width,canvasFrame.height);
+              ctx.stroke();
+              if((frameNo%150) === 1){
+                    game.createObstacle();
+                  }
+            if(game.gameOver === false){
+                game.gameScore.score = frameNo;
+            }
+              game.update();
+              frameNo++;
+
+
+
+            }
+        //-------------------------------------------------------------------------------------
+        //------ Events -----------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
+
+        function windowKeyDown(e){
+              if(e.keyCode === 38){
+                    game.hero.gravity = -0.15;
+                  }
+            }
+
+       function windowKeyUp(e){
+        game.hero.gravity = 0.25;
+    }
+</script>
+
+</body>
+</html>

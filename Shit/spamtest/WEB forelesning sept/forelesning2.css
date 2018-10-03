@@ -1,0 +1,22 @@
+body{
+    width:80%;
+    margin:50px;
+    border: solid 1px green;
+}
+
+header{
+    background-color: lightgreen;
+    text-allign: center;
+    padding: 10px 5px;
+}
+
+.item{
+    color: deeppink;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+#idElement{
+    background-color: lightseagreen;
+    color: lightsteelblue;
+}

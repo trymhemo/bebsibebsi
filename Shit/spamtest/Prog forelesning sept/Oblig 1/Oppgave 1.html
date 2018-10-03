@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+            document.getElementById("forsteBtn").onclick = velkomst;
+            document.getElementById("andreBtn").onclick = avskjed;
+        }
+
+        function velkomst(){
+            document.getElementById("utskrift").innerHTML = "Hei på deg";
+        }
+        function avskjed(){
+            document.getElementById("utskrift").innerHTML = "Ha det bra";
+        }
+
+    </script>
+</head>
+<body>
+
+    <button id="forsteBtn">Trykkes først.</button>
+
+    <button id="andreBtn">Trykkes sist.</button>
+
+    <p id="utskrift">Tekst vises her</p>
+</body>
+</html>

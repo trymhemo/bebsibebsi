@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = oppstart
+
+        function oppstart(){
+            document.getElementById("addere").onclick = addert;
+            document.getElementById("subtrahere").onclick = subtrahert;
+            document.getElementById("dividere").onclick = dividert;
+            document.getElementById("multiplisere").onclick = multiplisert;
+        }
+        function addert(){
+            var tall1 = parseInt(document.getElementById("forstetall").value);
+            var tall2 = parseInt(document.getElementById("andretall").value);
+
+            var resultat = tall1 + tall2
+
+            document.getElementById("utskrift").innerHTML = resultat;
+        }
+        function subtrahert(){
+            var tall1 = parseInt(document.getElementById("forstetall").value);
+            var tall2 = parseInt(document.getElementById("andretall").value);
+
+            var resultat = tall1 - tall2
+
+            document.getElementById("utskrift").innerHTML = resultat;
+        }
+        function dividert(){
+            var tall1 = parseInt(document.getElementById("forstetall").value);
+            var tall2 = parseInt(document.getElementById("andretall").value);
+
+            var resultat = tall1 / tall2
+
+            document.getElementById("utskrift").innerHTML = resultat;
+        }
+        function multiplisert(){
+            var tall1 = parseInt(document.getElementById("forstetall").value);
+            var tall2 = parseInt(document.getElementById("andretall").value);
+
+            var resultat = tall1 * tall2
+
+            document.getElementById("utskrift").innerHTML = resultat;
+        }
+    </script>
+</head>
+<body>
+    <p>Tall 1</p><input id="forstetall" value="5" type="text"> <br/>
+    <p>Tall 2</p><input id="andretall" value="5" type="text">
+    <br/><hr>
+    <p>Adder</p><button id="addere">Regn ut</button>
+    <p>Subtraher</p><button id="subtrahere">Regn ut</button>
+    <p>Divider</p><button id="dividere">Regn ut</button>
+    <p>Multipliser</p><button id="multiplisere">Regn ut</button>
+    <p id="utskrift" >Svar vises her</p>
+
+
+</body>
+</html>

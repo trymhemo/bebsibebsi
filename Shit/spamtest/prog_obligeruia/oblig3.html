@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblig3</title>
+</head>
+<body>
+    <script>
+
+        opg1();
+        opg2();
+        opg3();
+        opg4();
+        opg5();
+        opg6();
+        opg7();
+        opg8();
+        opg9();
+        opg10();
+
+        function opg1() {
+            var stykketekst ="2+3*2-4*6 = ";
+            var utregning1 = (2+3*(2-4)*6);
+
+            var svaropg1 = ( stykketekst + utregning1 );
+            console.log("-------------------------- del 1 --------------------------");
+            console.log(svaropg1);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg2() {
+            var meter = 25;
+            var cm = 34;
+
+            var totalmeter = (meter + (cm/100));
+            var totalmm = (totalmeter*1000);
+            var tommer = (totalmm/254);
+            var tommer2 = Math.round(tommer * 100) / 100;
+
+            var svaropg2 = (meter + " meter + " + cm +"cm = " + tommer2 +" tommer");
+            console.log("-------------------------- del 2 --------------------------");
+            console.log(svaropg2);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg3() {
+            var antdager = 3;
+            var anttimer = 12;
+            var antminutter = 14;
+            var antsekunder = 45;
+
+            var dtilmin = ((antdager*24)*60);
+            var ttilmin = (anttimer*60);
+            var stilmin = (antsekunder/60);
+
+            var totalmin = (dtilmin + ttilmin +antminutter + stilmin);
+            var svaropg3 = (antdager +" dager, " + anttimer + " timer, " + antminutter + " minutter og " + antsekunder + "sekunder" + " = " + totalmin +" minutter");
+            console.log("-------------------------- del 3 --------------------------");
+            console.log(svaropg3);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg4() {
+            var antmin = 6322.52;
+            var dager = ((antmin/60)/24);
+            var timer = (dager - Math.floor(dager))/(1/24);
+            var minutter = (timer - Math.floor(timer))/(1/60);
+            var sekunder = (minutter - Math.floor(minutter))/(1/60);
+
+            var heledager = Math.floor(dager);
+            var heletimer = Math.floor(timer);
+            var heleminutter = Math.floor(minutter);
+            var helesekunder = Math.floor(sekunder);
+
+            var svaropg4 = (antmin + " minutter = " + heledager + " dager, " + heletimer + " timer, " + heleminutter + " minutter og " + helesekunder + " sekunder");
+            console.log("-------------------------- del 4 --------------------------");
+            console.log(svaropg4);
+            console.log(timer);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg5() {
+            var antusd = 54;
+            var antnok = 420;
+            var kurs = (9.77/76);
+            var convusd = (antusd/kurs);
+            var convnok = (antnok*kurs);
+            var helusd = Math.round(convusd);
+            var helnok = Math.round(convnok);
+
+            var svaropg5del1 = (antusd + " USD = "+ helusd + " NOK");
+            var svaropg5del2 = (antnok + " NOK = "+ helnok + " USD");
+            console.log("-------------------------- del 5 --------------------------");
+            console.log(svaropg5del1);
+            console.log(svaropg5del2);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg6() {
+            var opgstring ="Det er mye mellom himmel og jord som vi ikke forstår";
+            var stringlengde = opgstring.length;
+            var tegn19 = opgstring.charAt(19);
+            var tegn35_43 = opgstring.slice(35,43);
+            var posjord = opgstring.indexOf("jord");
+
+            var svaropg6del1 = ("Det er mye mellom himmel og jord som vi ikke forstår. har " + stringlengde +" tegn");
+            var svaropg6del2 = ("på plass nummer 19 = " + tegn19);
+            var svaropg6del3 = ("på plass nummer 35 og 8 plasser fremover = " +tegn35_43);
+            var svaropg6del4 = ("\"jord\" har indeks nummer " + posjord);
+            console.log("-------------------------- del 6 --------------------------");
+            console.log(svaropg6del1);
+            console.log(svaropg6del2);
+            console.log(svaropg6del3);
+            console.log(svaropg6del4);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg7() {
+            var nrvar1 = 5;
+            var nrvar2 = 3;
+            var nrvar3 = 7;
+            var nrvar4 = 2;
+            var tekstvar1 = "a";
+            var tekstvar2 = "b";
+            var tekstvar3 = "1";
+            var tekstvar4 = "2500";
+            var tekstvar5 = "abcd";
+            var tekstvar6 = "arne";
+            var tekstvar7 = "thomas";
+            var tekstvar8 = "bcd";
+
+            var opg7del1 = nrvar1 > nrvar2;
+            var opg7del2 = nrvar3 >= nrvar3;
+            var opg7del3 = tekstvar1 > tekstvar2;
+            var opg7del4 = tekstvar3 < tekstvar1;
+            var opg7del5 = tekstvar4 < tekstvar5;
+            var opg7del6 = tekstvar6 != tekstvar7;
+            var opg7del7 = (nrvar4 == nrvar1) == true;
+            var opg7del8 = (tekstvar5 > tekstvar8) == false;
+
+            var svaropg7del1 = (nrvar1 + " > " + nrvar2 + " = " + opg7del1);
+            var svaropg7del2 = (nrvar3 + " >= " + nrvar3 + " = " + opg7del2);
+            var svaropg7del3 = ('"' + tekstvar1 + '"' + ' > ' + '"' + tekstvar2 + '"' + ' = ' + opg7del3);
+            var svaropg7del4 = ('"' + tekstvar3 + '"' + ' < ' + '"' + tekstvar1 + '"' + ' = ' + opg7del4);
+            var svaropg7del5 = ('"' + tekstvar4 + '"' + ' != ' + '"' + tekstvar5 + '"' + ' = ' + opg7del5);
+            var svaropg7del6 = ('"' + tekstvar6 + '"' + ' != ' + '"' +tekstvar7 + '"' + ' = ' + opg7del6);
+            var svaropg7del7 = ('(' + nrvar4 + ' == ' + nrvar1 + ')' + ' == ' + true +' = ' + opg7del7);
+            var svaropg7del8 = ('("' + tekstvar5 + '"' + ' > ' + '"' + tekstvar8 + '")' + ' == ' + false +' = ' + opg7del8);
+            console.log("-------------------------- del 7 --------------------------");
+            console.log(svaropg7del1);
+            console.log(svaropg7del2);
+            console.log(svaropg7del3);
+            console.log(svaropg7del4);
+            console.log(svaropg7del5);
+            console.log(svaropg7del6);
+            console.log(svaropg7del7);
+            console.log(svaropg7del8);
+            console.log("-------------------------- end ----------------------------\n ");
+
+        }
+
+        function opg8() {
+            var string1 ="254";
+            var string2 ="57.23";
+            var string3 ="25 kroner";
+
+            var stringtonr1 = parseFloat(string1);
+            var stringtonr2 = parseFloat(string2);
+            var stringtonr3 = parseFloat(string3);
+
+            var svaropg8del1 = (string1 + " = " + stringtonr1);
+            var svaropg8del2 = (string2 + " = " + stringtonr2);
+            var svaropg8del3 = (string3 + " = " + stringtonr3);
+            console.log("-------------------------- del 8 --------------------------");
+            console.log(svaropg8del1);
+            console.log(svaropg8del2);
+            console.log(svaropg8del3);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg9() {
+          var randomnr =  Math.floor(Math.random() * 360) + 1;
+
+          var svaropg9 = ("Tilfeldig tall hvor 1 >= x <= 360 = " + randomnr);
+            console.log("-------------------------- del 9 --------------------------");
+            console.log(svaropg9);
+            console.log("-------------------------- end ----------------------------\n ");
+        }
+
+        function opg10() {
+            var totaldager = 131;
+            var antuker = Math.floor(totaldager/7);
+            var restdager = totaldager%7;
+
+            var svaropg10 = (totaldager + " dager  er lik " + antuker + " uker og "+ restdager + " dager");
+            console.log("-------------------------- del 10 -------------------------");
+            console.log(svaropg10);
+            console.log("-------------------------- end ----------------------------");
+        }
+
+    </script>
+
+</body>
+</html>

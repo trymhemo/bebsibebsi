@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = oppstart
+        var antallVarer = "";
+        var sumVarer = 0;
+
+        function oppstart(){
+            document.getElementById("leggTilGjenstand").onclick = leggtil;
+            document.getElementById("knapp1").onclick = utskriftknapp1;
+            document.getElementById("knapp2").onclick = utskriftknapp2;
+            document.getElementById("knapp3").onclick = utskriftknapp3;
+            document.getElementById("knapp4").onclick = utskriftknapp4;
+            document.getElementById("knapp5").onclick = utskriftknapp5;
+            document.getElementById("knapp6").onclick = utskriftknapp6;
+            document.getElementById("knapp7").onclick = utskriftknapp7;
+            document.getElementById("knapp8").onclick = utskriftknapp8;
+            document.getElementById("knapp9").onclick = utskriftknapp9;
+            document.getElementById("knapp0").onclick = utskriftknapp0;
+            document.getElementById("slett").onclick = slett;
+        }
+
+
+        function utskriftknapp1(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "1");
+            antallVarer += "1";
+        }
+        function utskriftknapp2(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "2");
+            antallVarer += "2";
+        }
+        function utskriftknapp3(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "3");
+            antallVarer += "3";
+        }
+        function utskriftknapp4(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "4");
+            antallVarer += "4";
+        }
+        function utskriftknapp5(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "5");
+            antallVarer += "5";
+        }
+        function utskriftknapp6(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "6");
+            antallVarer += "6";
+        }
+        function utskriftknapp7(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "7");
+            antallVarer += "7";
+        }
+        function utskriftknapp8(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "8");
+            antallVarer += "8";
+        }
+        function utskriftknapp9(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "9");
+            antallVarer += "9";
+        }
+        function utskriftknapp0(){
+            parseInt(document.getElementById("antallHuskGjenstand").innerHTML += "0");
+            antallVarer += "0";
+        }
+        function slett(){
+            document.getElementById("antallHuskGjenstand").innerHTML = null;
+        }
+
+
+        //function leggtil(){
+        //    var stringResultat = "<li>" + document.createElement("huskGjenstand").innerHTML + "</li>";  LAGER BARE <li> UTEN INNHOLD... HVORFOR?
+
+        //   document.getElementById("handleliste").innerHTML += stringResultat;}
+
+
+        function leggtil(){
+            antallVarer = parseInt(antallVarer);
+            sumVarer = antallVarer;
+            var vareBoyd = "";
+            var flertall = "";
+            var innholdTekstboks = document.getElementById("huskGjenstand").innerHTML;
+
+            var sisteBokstav = innholdTekstboks[innholdTekstboks.length -1];
+
+            if(sumVarer > 1){
+                flertall = "er";
+                vareBoyd = " varer";
+
+            }
+
+            if(sisteBokstav = "e"){
+                flertall = "r";
+            }
+
+            if(sisteBokstav = "r"){
+                flertall = "";
+            }
+
+            if(sumVarer = 1){
+                flertall = "";
+                vareBoyd = " vare";
+            }
+
+
+            var node = document.createElement("Li");
+            var tekst = sumVarer + " " + document.getElementById("huskGjenstand").value + flertall; //fungerer ikke med "innerHTML", må bruke value istedenfor... hvorfor?
+            var textnode = document.createTextNode(tekst);
+            node.appendChild(textnode);
+            document.getElementById("handleliste").appendChild(node);
+            antallVarer = 0;
+            document.getElementById("antallHuskGjenstand").innerHTML = "";
+            document.getElementById("sumVarer").innerHTML = "Du har " + sumVarer + vareBoyd + " i handlelisten."
+        }
+
+    </script>
+    <style>
+        .teller{
+            border: solid 1px lightblue;
+            font-family: Helvetica;
+            text-transform: capitalize;
+            max-width: 400px;
+            width: 57px;
+            height: 18px;
+            font-size: 80%;
+            padding:9px;
+        }
+        .knapp0{
+            margin-left: 27.5px;
+        }
+        button{
+            margin-top: 5px;
+        }
+        .slett{
+            margin-left: 15px;
+        }
+        h1{
+            font-size: 70%;
+        }
+        h2{
+            font-size: 75%;
+        }
+    </style>
+</head>
+<body>
+
+<button id="knapp7">7</button>
+<button id="knapp8">8</button>
+<button id="knapp9">9</button><br/>
+<button id="knapp4">4</button>
+<button id="knapp5">5</button>
+<button id="knapp6">6</button><br/>
+<button id="knapp1">1</button>
+<button id="knapp2">2</button>
+<button id="knapp3">3</button><br/>
+<button class="knapp0" id="knapp0">0</button>
+<br/>
+<button class="slett" id="slett">
+    Nullstill
+</button>
+
+<div>
+    <p class="teller" id="antallHuskGjenstand" value="1"></p>
+    <!--<input value="antall" type="text" id="antallHuskGjenstand">-->
+    <input value="vare" type="text" id="huskGjenstand">
+    <button id="leggTilGjenstand">Legg til</button>
+    <ul id="handleliste"> </ul>
+</div>
+<p id="sumVarer">Du har 0 varer i handlelisten.</p>
+
+</body>
+</html>

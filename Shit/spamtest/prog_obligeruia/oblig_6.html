@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oblig6</title>
+</head>
+<body>
+    <script>
+        console.log("-------------------------- Oblig 6 del 1 --------------------------");
+            del1();
+        console.log("-------------------------- end ------------------------------------\n ");
+
+        console.log("-------------------------- Oblig 6 del 2 --------------------------");
+            del2();
+        console.log("-------------------------- end ------------------------------------\n ");
+
+        console.log("-------------------------- Oblig 6 del 3 --------------------------");
+            opg3();
+        console.log("-------------------------- end ------------------------------------\n ");
+
+        console.log("-------------------------- Oblig 6 del 4 --------------------------");
+            del4(567,"NORmalsats");
+            del4(346,"Kino og tRansport");
+            del4(3667,"Matvarer");
+            del4(2322,"bil");
+        console.log("-------------------------- end ------------------------------------\n ");
+
+        console.log("-------------------------- Oblig 6 del 5 --------------------------");
+            del5();
+        console.log("-------------------------- end ------------------------------------\n ");
+
+        function del1() {
+            console.log("Min første funskjon!")
+        }
+
+        function del2() {
+            for(var i = 1; i <= 4; i++){
+            opg2("Runde" + i + ":",Math.floor(Math.random() * 10) + 1,Math.floor(Math.random() * 10) + 1);
+
+            function opg2(tekst1,tall1,tall2) {
+                console.log(tekst1 + "Summen av "  + tall1 + " og " + tall2 + " er " + (tall1+tall2));
+                }
+            }
+        }
+        function opg3(){
+            var partall = "";
+            var oddetall = "";
+            for(var i = 1; i <= 20; i++) {
+
+                if (sjekkpartall(i) === true) {
+                    partall += i + ", "
+                }else {oddetall += i + ", "}
+                function sjekkpartall(tall) {
+                    if (tall%2 === 0) {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
+                }
+            }
+            console.log(partall);
+            console.log(oddetall);
+        }
+
+
+        function del4 (brutto,gruppe){
+            var MVA;
+            var kategori = "";
+            if (gruppe.toLowerCase() === "normalsats") {
+                MVA = 25;
+                kategori += "normalsats";
+            }
+            else if (gruppe.toLowerCase() === "matvarer") {
+                MVA = 15;
+                kategori += "matvarer";
+            }
+            else if ( gruppe.toLowerCase() === "kino" || gruppe.toLowerCase() === "transport" || gruppe.toLowerCase() === "kino og transport" || gruppe.toLowerCase() === "transport og kino") {
+                MVA = 10;
+                kategori += "kino og transport";
+
+            }
+            else(MVA = NaN);
+                var netto = (100*brutto)/(MVA+100);
+            if (isNaN(MVA) === true) {
+                console.log("Ukjent moms gruppe!")
+            }else(console.log("Nettopris av " + brutto + " i kategori "+' "'+ kategori + '"'+" er " + netto));
+
+        }
+
+
+        function del5() {
+            var i2 = 1000;
+            for(var i = 1; i <= i2; i++) {
+                function utsagn(n) {
+                    var venstreerlik = (n*n);
+                    var hoyreerlik = ((n*n)+n+1);
+                    var t = 1;
+                    var r = 2;
+
+                    while (t < n+1) {
+
+                        venstreerlik += ((n*n)+t);
+                        t++
+                    }
+                    while (n+r < (2*n)+1) {
+
+                        hoyreerlik += ((n*n)+n+r);
+                        r++
+                    }
+                    if (venstreerlik === hoyreerlik){
+                        return true
+                    } else {return false}
+                }
+                if (utsagn(i) === false) {
+                    console.log("Utsagnet stemmer ikke for runde " + i)
+                }
+                else if (utsagn(i) === true && i === i2) {
+                    console.log("Utsagnet stemmer for " + i2 + " runder!")
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

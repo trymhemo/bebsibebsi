@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="doot.css">
+
+
+    <script>
+        window.onload = oppstart;
+
+        function oppstart(){
+            document.getElementById("musikk").onclick = visSvar1;
+            document.getElementById("gaming").onclick = visSvar2;
+            document.getElementById("mat").onclick = visSvar3;
+            document.getElementById("interesser").onclick = visSvar4;
+            document.getElementById("verdier").onclick = visSvar5;
+        }
+
+        function visSvar1(){
+            document.getElementById("visning").innerHTML = "Jeg har et øre for musikk og bruker mye tid på pleie ørekanalene mine med myke og skarpe frekvenser. Jeg komponerer og produserer også musikk. Du kan høre musikken min ved å bla lengre ned.";
+        }
+
+        function visSvar2(){
+            document.getElementById("visning").innerHTML = "Jeg bruker noe tid på å spille. Det har preget store deler av oppveksten min, og noen av spillene jeg spilte for mange år siden gir jeg fortsatt et besøk av og til.";
+        }
+
+        function visSvar3(){
+            document.getElementById("visning").innerHTML = "Mat er noe som opptar tankene mine ofte. Når er neste gang jeg skal spise? Holder maten jeg har tatt med meg? Grunnet høy metabolisme så er dette helt rasjonelt å tenke. Jeg har lagt ved en liste av de rettene jeg liker best.";
+        }
+
+        function visSvar4(){
+            document.getElementById("visning").innerHTML = "Utenom å trene 3 ganger i uken så bruker jeg mye tid på nettet. Mer enn jeg spiller faktisk. Utrolig nok, så bruker jeg telefonen til å surfe utenfor hjemmet med 6GB data i mnd.";
+        }
+
+        function visSvar5(){
+            document.getElementById("visning").innerHTML = "Det er viktig å ha klare verdier i livet for å vite hva man skal leve etter. For meg har det lenge vært uklart hva dette er for meg, men det siste året har det klarnet.";
+        }
+
+
+
+    </script>
+</head>
+<body>
+
+<main>
+    <h1> major life choices</h1>
+    <h2>dette definerer meg som person</h2>
+    <p class="page1"> jeg er ikke så mye med andre mennesker, bortsett fra når jeg er på campus</p>
+</main>
+    <nav>
+    <ul>
+        <li id="musikk">Musikk
+            <ul>
+                <li><a target=_blank href="https://soundcloud.com/zesmusic" >ZES</a></li>
+                <li><a target=_blank href="https://www.youtube.com/watch?v=YqvCptqhHfs">Travis Scott</a></li>
+                <li><a target=_blank href="https://www.youtube.com/user/daemonastvri">Astari</a></li>
+                <li><a target=_blank href="https://www.youtube.com/results?search_query=burial">Burial</a></li>
+            </ul>
+        </li>
+        <li id="gaming"> Gaming
+            <ul>
+                <li><a target=_blank href="https://www.spiralknights.com/">Spiral Knights</a></li>
+                <li><a target=_blank href="https://www.epicgames.com/fortnite/en-US/home">Fortnite</a></li>
+                <li><a target=_blank href="https://www.dirtybomb.com/">Dirty Bomb</a></li>
+            </ul>
+        </li>
+        <li id="mat"> Mat
+            <ul>
+                <li><a target=_blank href="https://www.matprat.no/">Kjøttkaker</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Lasagne</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Pizza</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Poptarts</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Mac n' cheese</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Medium rare biff</a></li>
+                <li><a target=_blank href="https://www.matprat.no/">Spare Ribs</a></li>
+            </ul>
+        </li>
+        <li id="interesser"> Interesser
+            <ul>
+                <li><a target=_blank href="https://www.twitch.com">Twitch</a></li>
+                <li><a target=_blank href="https://www.youtube.com">YouTube</a></li>
+                <li><a target=_blank href="https://www.netflix.com">Surfing</a></li>
+                <li><a target=_blank href="https://www.trening.no">Trening</a></li>
+            </ul>
+        </li>
+        <li id="verdier"> Verdier
+            <ul>
+                <li><a target=_blank href="https://www.wikipedia.org/iherdighet">Iherdighet</a></li>
+                <li><a target=_blank href="ttps://www.wikipedia.org/lyrikk">Lyrikk</a></li>
+                <li><a target=_blank href="ttps://www.wikipedia.org/glede">Glede</a></li>
+                <li><a target=_blank href="ttps://www.wikipedia.org/kreativitet">Kreativitet</a></li>
+            </ul>
+        </li>
+    </nav>
+
+    <br/>
+
+   <main>
+    <div class="page2">
+        <p id="visning">Trykk på en overskrift i menyen for å vite mer</p>
+    </div>
+    <br/>
+
+
+    <h3>her bor jeg</h3>
+        <br/>
+    <iframe
+            class="google"
+        width="1000"
+        height="auto"
+        src="https://maps.google.com/maps?q=hans%20nielsen%20hauges%20g&t=&z=13&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+
+    <br/>
+
+       <h3>dette er soundclouden min</h3>
+    <div >
+        <iframe class="sc" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/120926473&color=%23f373e4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+  </main>
+
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Freak forum registrering</title>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+
+            document.getElementById("sendInnKnapp").onclick = sjekkInputs;
+
+        }
+
+        function sjekkInputs() {
+
+            var utskrift = document.getElementById("utskrift");
+
+            // Klarerer utskrifts paragrafen for hver gang knappen trykkes på.
+            utskrift.innerHTML = "";
+
+            // Personen er ikke akseptert enda
+            var akseptert = false;
+
+            var alder = document.getElementById("alderInput").value;
+            var hoyde = document.getElementById("hoydeInput").value;
+            var vekt = document.getElementById("vektInput").value;
+
+            var kjonn;
+            var mannRadio = document.getElementById("mannRadio");
+            var kvinneRadio = document.getElementById("kvinneRadio");
+
+            /*
+
+                FYLL INN UTRYKKENE SOM MANGLER I IF TESTENE
+
+            */
+
+
+            /***** FEILSJEKK AV INPUT VERDIER *****/
+            console.log(alder, hoyde, vekt, kjonn);
+
+            //Hvis noen av input-feltene er tomme (alder, hoyde, vekt);
+            if(alder === "" || hoyde === "" || vekt === "") {
+                utskrift.innerHTML = "Vennligst fyll inn verdier i alle feltene.";
+            }
+            // Hvis alder er under 1
+            else if( parseInt(alder) < 1 ) {
+                utskrift.innerHTML = "Vennligst fyll inn en gyldig alder";
+            }
+            // Hvis høyde er under 40
+            else if(parseInt(hoyde) < 40) {
+                utskrift.innerHTML = "Vennligst fyll inn en gyldig hoyde";
+            }
+            // Hvis vekt er under 1
+            else if(parseInt(vekt) < 1) {
+                utskrift.innerHTML = "Vennligst fyll inn en gyldig vekt";
+            }
+            // Hvis ingen av kjønn knappene er huket av
+            else if(mannRadio.checked === false && kvinneRadio.checked === false ) {
+                utskrift.innerHTML = "Vennligst velg et kjønn";
+            }
+            // Hvis alt er OK, fortsett registrering
+            else {
+
+                /***** REGISTRERINGS BIT *****/
+
+                // hvis radio button for mann er trykket på
+                if(mannRadio.checked === true) {
+                    kjonn = "Mann";
+                }
+                // hvis radio button for kvinne er trykket på
+                else if(kvinneRadio.checked === true) {
+                    kjonn = "Kvinne";
+                }
+
+
+                //For testing purposes:
+                console.log("Kjønn: " + kjonn);
+                console.log("Alder: " + alder);
+                console.log("Høyde: " + hoyde);
+                console.log("Vekt: " + vekt);
+
+                alder = parseInt(alder);
+                hoyde = parseInt(hoyde);
+                vekt = parseInt(vekt);
+
+                // Hvis personen er over 100 år
+                if(alder === 100) {
+                    utskrift.innerHTML += "Imponerende alder på deg ass!\n";
+                    akseptert = true;
+                }
+
+                // Hvis personen er mann og under 100 cm
+                if(kjonn === "Mann" && hoyde < 100) {
+                    utskrift.innerHTML += "Dæven du er lav!\n";
+                    akseptert = true;
+
+                }
+
+                // Hvis personen er kvinne og over 210 cm
+                if(kjonn === "Kvinne" && hoyde > 210) {
+                    utskrift.innerHTML += "Steike du er høy frøken!\n";
+                    akseptert = true;
+                }
+
+                // Hvis personen er mann, lavere enn 140 cm og veier over 150 kg
+                if(kjonn === "Mann" && hoyde < 140 && vekt > 150) {
+                    utskrift.innerHTML += "SMÅ chubby du! (get the pun?)\n";
+                    akseptert = true;
+                }
+
+                // hvis personen er høyere enn 210 cm
+                // I tillegg til å veie mindre enn 40 kg eller være 10 år eller yngre
+                if(hoyde > 210 && (vekt < 40 || alder <= 10) {
+                    utskrift.innerHTML += "Er det mulig å være så ung eller tynn og høy?\n";
+                    akseptert = true;
+                }
+
+                // Hvis personen er kvinne og over 130.
+                // Eventuelt om personen veier mindre enn 20 kg eller er over 250cm og er 14 år
+                if() {
+                    utskrift.innerHTML += "My God! Amazing!\n";
+                    akseptert = true;
+                }
+
+
+                // Hvis noen av kravene er oppfylt og brukeren er akseptert
+                if() {
+                    utskrift.innerHTML += "Velkommen freak! <3 ";
+                }
+                else {
+                    utskrift.innerHTML += "Sorry, du er ikke freaky nok!";
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+
+<p>
+    <input id="alderInput" type="number" placeholder="Alder" />
+</p>
+<p>
+    <input id="hoydeInput" type="number" placeholder="Hoyde i cm"/>
+</p>
+<p>
+    <input id="vektInput" type="number" placeholder="Vekt i kg"/>
+</p>
+<p>
+    Mann: <input type="radio" name="kjonn" id="mannRadio" />
+    Kvinne: <input type="radio" name="kjonn" id="kvinneRadio" />
+    <!-- Holder oss til de gammeldagse kjønnene for denne gang ('u') -->
+</p>
+<p>
+    <button id="sendInnKnapp">Send inn</button>
+</p>
+
+<p id="utskrift"></p>
+
+</body>
+</html>

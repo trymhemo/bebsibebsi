@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 5</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+
+            document.getElementById("bekreft").onclick = bekreft;
+        }
+
+        function bekreft(){
+            var brukerKjonn = document.getElementById("brukerKjonn").value;
+            var brukerAlder = parseInt(document.getElementById("brukerAlder").value);
+            var brukerNavn = document.getElementById("brukerNavn").value;
+            var brukerHoyde = parseInt(document.getElementById("brukerHoyde").value);
+            var brukerNavnLengde = brukerNavn.length;
+
+            if(brukerKjonn === "mann"){
+                var mannligSpaadom = brukerNavnLengde * brukerAlder - brukerHoyde;
+                var mannligSpaadomRest = mannligSpaadom % 2;
+                }
+
+
+                if(mannligSpaadomRest === 0){
+                    document.getElementById("utskrift").innerHTML = "Det vil gå deg godt her i verden... ";
+                    document.getElementById("utskrift2").innerHTML = "For at spådommen skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+                } else if(mannligSpaadomRest === 1){
+                    document.getElementById("utskrift").innerHTML = "Stakkars deg! Alt kommer til å gå deg galt...";
+                    document.getElementById("utskrift2").innerHTML = "For at spådommen ikke skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+                    }
+
+            if(brukerKjonn === "kvinne"){
+                var kvinnligSpaadom = brukerAlder * brukerHoyde - 3;
+                var kvinnligSpaadomRest = kvinnligSpaadom % 2;
+                }
+
+                if(kvinnligSpaadomRest === 0){
+                    document.getElementById("utskrift").innerHTML = "Det vil gå deg godt her i verden... ";
+                    document.getElementById("utskrift2").innerHTML = "For at spådommen skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+                }else if(kvinnligSpaadomRest === 1){
+                    document.getElementById("utskrift").innerHTML = "Stakkars deg! Alt kommer til å gå deg galt...";
+                    document.getElementById("utskrift2").innerHTML = "For at spådommen ikke skal gå i oppfyllelse, må du betale inn 100 kr til følgende kontonummer: 1234.12.12345";
+                }
+        }
+
+    </script>
+    <style>
+        input{
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+Navn:<input id="brukerNavn" type="text">
+
+Kjønn:<select name="Kjønn" id="brukerKjonn">
+    <option value="mann">Mann</option>
+    <option value="kvinne">Kvinne</option>
+</select>
+
+Alder: <input id="brukerAlder" type="number" value="18">
+
+Høyde:<input id="brukerHoyde" type="number" value="180">cm
+
+<button id="bekreft">Bekreft.</button>
+<br>
+<p id="utskrift">utskrift</p>
+<p id="utskrift2">utskrift2</p>
+
+</body>
+</html>

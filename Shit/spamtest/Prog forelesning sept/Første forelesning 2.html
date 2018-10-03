@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <script>
+
+            window.onload = oppstart;
+
+            function oppstart(){
+                document.getElementById("button1").onclick = knapp1Trykket;
+                document.getElementById("button2").onclick = knapp2Trykket;
+
+            }
+            function knapp1Trykket(){
+                //alert("Hei");
+
+                document.getElementById("utskrift1").innerHTML = "knapp 1 ble trykket på"
+            }
+            function knapp2Trykket(){
+                //alert("Hei");
+
+                document.getElementById("utskrift2").innerHTML = "knapp 2 ble trykket på"
+            }
+        </script>
+
+    </head>
+    <body>
+
+        <p id="utskrift1"> Fylltekst</p>
+        <p id="utskrift2"> Fylltekst</p>
+
+        <button id="button1">Trykk her</button>
+        <button id="button2">Trykk her</button>
+
+    </body>
+</html>

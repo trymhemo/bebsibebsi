@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+            document.getElementById("bekreft").onclick = bekreft;
+
+            function bekreft(){
+
+                var aar = parseInt(document.getElementById("aar").value);
+                var rente = parseInt(document.getElementById("rente").value);
+                var penger = parseInt(document.getElementById("pengebelop").value);
+                var teller = 0;
+
+                while(teller <= aar){
+                    teller++;
+                    document.getElementById("utskrift").innerHTML += "Etter " + teller + " år har du " + (penger += (rente/100 * penger)) + " penger i banken \n";
+
+                }
+            }
+        }
+
+
+    </script>
+    <style>
+        .scrollabletextbox {
+            height:100px;
+            width:400px;
+            font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+            font-size: 82%;
+            overflow:scroll;
+        }
+    </style>
+</head>
+<body>
+
+Pengebeløp <input id="pengebelop" type="number"> <br>
+Antall År  <input id="aar" type="number"> <br>
+Rente      <input id="rente" type="text"> <br>
+
+<button id="bekreft">Regn ut</button>
+<br>
+
+<textarea id="utskrift" class="scrollabletextbox" name="note"></textarea>
+
+</body>
+</html>

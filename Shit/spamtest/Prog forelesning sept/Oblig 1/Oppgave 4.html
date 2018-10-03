@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        window.onload = oppstart;
+
+        var lengde = 0;
+
+        function oppstart(){
+            document.getElementById("knapp1").onclick = utskriftknapp1;
+            document.getElementById("knapp2").onclick = utskriftknapp2;
+            document.getElementById("knapp3").onclick = utskriftknapp3;
+            document.getElementById("knapp4").onclick = utskriftknapp4;
+            document.getElementById("knapp5").onclick = utskriftknapp5;
+            document.getElementById("knapp6").onclick = utskriftknapp6;
+            document.getElementById("knapp7").onclick = utskriftknapp7;
+            document.getElementById("knapp8").onclick = utskriftknapp8;
+            document.getElementById("knapp9").onclick = utskriftknapp9;
+            document.getElementById("knapp0").onclick = utskriftknapp0;
+            document.getElementById("slett").onclick = slett;
+        }
+        function utskriftknapp1(){
+            document.getElementById("tekstboks").innerHTML += + "1";
+            lengde = lengde +1;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp2(){
+            document.getElementById("tekstboks").innerHTML += "2";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp3(){
+            document.getElementById("tekstboks").innerHTML += "3";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp4(){
+            document.getElementById("tekstboks").innerHTML += "4";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp5(){
+            document.getElementById("tekstboks").innerHTML += "5";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp6(){
+            document.getElementById("tekstboks").innerHTML += "6";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp7(){
+            document.getElementById("tekstboks").innerHTML += "7";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp8(){
+            document.getElementById("tekstboks").innerHTML += "8";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp9(){
+            document.getElementById("tekstboks").innerHTML += "9";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function utskriftknapp0(){
+            document.getElementById("tekstboks").innerHTML += "0";
+            lengde++;
+            if(lengde > 7 ){
+                document.getElementById("melding").innerHTML = "Tusen takk, baby.";
+            }
+        }
+        function slett(){
+            document.getElementById("tekstboks").innerHTML = null;
+        }
+
+    </script>
+    <style>
+        p{
+            border: solid 1px lightblue;
+            font-family: Helvetica;
+            text-transform: capitalize;
+            max-width: 400px;
+            width: 57px;
+            height: 18px;
+            font-size: 80%;
+            padding:9px;
+        }
+        .knapp0{
+            margin-left: 27.5px;
+        }
+        button{
+            margin-top: 5px;
+        }
+        .slett{
+            margin-left: 15px;
+        }
+        h1{
+            font-size: 70%;
+        }
+        h2{
+            font-size: 75%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Give me ya number, honey.</h1>
+
+    <button id="knapp7">7</button>
+    <button id="knapp8">8</button>
+    <button id="knapp9">9</button><br/>
+    <button id="knapp4">4</button>
+    <button id="knapp5">5</button>
+    <button id="knapp6">6</button><br/>
+    <button id="knapp1">1</button>
+    <button id="knapp2">2</button>
+    <button id="knapp3">3</button><br/>
+    <button class="knapp0" id="knapp0">0</button>
+    <br/>
+    <p id="tekstboks" value="41288701"></p>
+    <br/>
+    <button class="slett" id="slett">
+        Slett
+    </button>
+    <br/>
+    <h2 id="melding"></h2>
+
+
+
+</body>
+</html>

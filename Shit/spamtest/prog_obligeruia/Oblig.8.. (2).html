@@ -1,0 +1,246 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblig 08</title>
+</head>
+<body>
+<label for="selectBankAccountType">Kontotype</label>
+<select name="Kontotype" id="selectBankAccountType" onchange="bankAccountTypeChange(this)"></select>
+
+<label for="selectAccountCurrencyType"> i valutta</label>
+<select name="Valuttatype" id="selectAccountCurrencyType" onchange="accountCurrencyTypeChange(this)"></select>
+
+<p></p>
+
+<label for="txtAmount">Utak / Innskudd</label>
+<input type="number" id="txtAmount" value="0">
+
+<label for="selectCurrencyType"> i valutta</label>
+<select name="Valuttatype" id="selectCurrencyType"></select>
+<button id="cmbDeposit" onclick="cmbDepositClick()">Sett inn</button>
+<button id="cmbWithdraw" onclick="cmbWithdrawClick()">Ta ut</button>
+
+<p></p>
+
+<label for="txtBalance">Saldo på konto</label>
+<input type="text" readonly="readonly" id="txtBalance" value="0">
+<div style="margin-left: 100px">
+    <code id="divTextOut"></code>
+</div>
+<div>
+    <p>
+        Her kan dere svare på Del 6 i oppgaven :-)
+    </p>
+</div>
+<script>
+    //-------------------------------------------------------------------------------------
+    //------ Global Variables -------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    var myAccount;
+
+    var selectBankAccountType = document.getElementById("selectBankAccountType");
+    var selectAccountCurrencyType = document.getElementById("selectAccountCurrencyType");
+    var txtAmount = document.getElementById("txtAmount");
+    var selectCurrencyType = document.getElementById("selectCurrencyType");
+    var txtBalance = document.getElementById("txtBalance");
+
+    var divTextOut = document.getElementById("divTextOut");
+    var txtInfo = divTextOut.innerHTML;
+
+
+    var bankAccountTypes = {
+        Standard : {value: 0, name: "Brukskonto"},
+        Saving : {value: 1, name: "Sparekonto"},
+        Checking: {value: 2, name: "Kredittkonto"}
+    };
+
+    var currencyTypes = {
+        NOK: {value:1.00000, name: "Norske kroner", denomination: "kr" },
+        EUR: {value:0.10733, name: "Europeiske euro", denomination: "€" },
+        USD: {value:0.12652, name: "United States dollar", denomination: "$" },
+        GBP: {value:0.09550, name: "Pound sterling", denomination: "£" },
+        INR: {value:8.18624, name: "Indiske rupee", denomination: "र" },
+        AUD: {value:0.16129, name: "Australienske dollar", denomination: "A$" },
+        PHP: {value:6.48595, name: "Filippinske peso", denomination: "₱" },
+        SEK: {value:1.02580, name: "Svenske kroner", denomination: "kr" },
+        CAD: {value:0.15841, name: "Canadiske dollar", denomination: "C$" },
+        THB: {value:4.18410, name: "Thai baht", denomination: "฿" }
+    };
+
+
+
+    var TBankAccount = {
+        // Attributes
+        accountType: bankAccountTypes.Standard,
+        accountNo : "",
+        amount: 0,
+        overdraw: false,
+        accountCurrencyType: currencyTypes.NOK,
+
+        // Methods
+        Deposit: function(addAmount, currencyType){
+            txtInfo = "<code><br>";
+            if(!currencyType){
+                currencyType = currencyTypes.NOK;
+            }
+            txtInfo += "Nytt innskudd på " + currencyType.denomination + " " + addAmount + " i " + currencyType.name + "<br>";
+            this.amount += (addAmount*this.accountCurrencyType.value/currencyType.value);
+            txtInfo += "Ny saldo er " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2) + "<br>";
+            this.CheckAmount();
+            txtInfo += "</code>";
+            printOut();
+        },
+
+        Withdraw: function (decAmount, currencyType) {
+            txtInfo = "<code><br>";
+            if(!currencyType){
+                currencyType = currencyTypes.NOK;
+            }
+            txtInfo += "Nytt uttak på " + currencyType.denomination + " " + decAmount + " i " + currencyType.name +"<br>";
+            this.amount -= (decAmount*this.accountCurrencyType.value/currencyType.value);
+            txtInfo += "Ny saldo er " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2) + "<br>";
+            //this.dateWithdraw = new Date();
+            this.CheckAmount();
+            txtInfo += "</code>";
+            printOut();
+        },
+
+        CheckAmount: function (){
+            var oldOverDraw = this.overdraw;
+            this.overdraw = (this.amount<0);
+            if(oldOverDraw == this.overdraw && this.overdraw ){
+                txtInfo += "Konto er fremdeles overtrukket!" + "<br>";
+            } else if(oldOverDraw != this.overdraw && this.overdraw ){
+                txtInfo += "Konto er nå overtrukket!" + "<br>";
+            }else if(oldOverDraw != this.overdraw && oldOverDraw){
+                txtInfo += "Konto er ikke lengre overtrukket." + "<br>";
+            }
+            txtBalance.value = this.amount.toFixed(2);
+        },
+
+        ChangeAccountType: function(newAccountType){
+            txtInfo = "<code><br>";
+            if(newAccountType == this.accountType){
+                txtInfo += "Konto typen er ikke endret!" + "<br>";
+            }else{
+                txtInfo += "Konto typen er endret fra \"" + this.accountType.name + "\" til \"" + newAccountType.name + "\"<br>";
+            }
+            this.accountType = newAccountType;
+            this.CheckAmount();
+            txtInfo += "</code>";
+            printOut();
+        },
+
+        ChangeAccountCurrencyType: function(newCurrencyType){
+            txtInfo = "<code><br>";
+            if(newCurrencyType == this.accountCurrencyType){
+                txtInfo += "Valutta for konto ble ikke endret!" + "<br>";
+            }else{
+                txtInfo += "Kontovalutta er endret fra \"";
+                txtInfo += this.accountCurrencyType.name + "\" til \"" + newCurrencyType.name + "\"<br>";
+            }
+            this.amount = (this.amount/(this.accountCurrencyType.value/newCurrencyType.value));
+            this.accountCurrencyType = newCurrencyType;
+            this.CheckAmount();
+            txtInfo += "Saldo er " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2) + "<br>";
+            txtInfo += "</code>";
+            printOut();
+        }
+    };
+
+
+    //-------------------------------------------------------------------------------------
+    //------ Main code --------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+
+    window.onload = function () {
+        myAccount = createBankAccount("1234 56 78901");
+        fillAccountTypes();
+        fillCurrencyTypes();
+    };
+
+
+    //-------------------------------------------------------------------------------------
+    //------ Functions --------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+
+    function createBankAccount(accountNo){
+        txtInfo = "<code><br>";
+        var returnBankAccount = Object.create(TBankAccount);
+        returnBankAccount.accountNo = accountNo;
+        txtInfo += "Du har opprettet en \"" + returnBankAccount.accountType.name;
+        txtInfo += "\" med kontonr.:"  + returnBankAccount.accountNo + "<br>";
+        txtInfo += "</code>";
+        printOut();
+        return returnBankAccount;
+    }
+    //-------------------------------------------------------------------------------------
+
+    function printOut(){
+        txtInfo = "<br>" + txtInfo + "<br>";
+        divTextOut.innerHTML = txtInfo;
+    }
+    //-------------------------------------------------------------------------------------
+
+    function fillAccountTypes(){
+        for (var bankAccountType in bankAccountTypes) {
+            var option = document.createElement("option");
+            option.value = bankAccountType;
+            option.text = bankAccountTypes[bankAccountType].name;
+            if(bankAccountTypes[bankAccountType] == myAccount.accountType){
+                option.selected = true;
+            }
+            selectBankAccountType.add(option);
+        }
+    }
+    //-------------------------------------------------------------------------------------
+
+    function fillCurrencyTypes(){
+        for (var currencyType in currencyTypes) {
+            selectAccountCurrencyType.add(createOption());
+            selectCurrencyType.add(createOption());
+        }
+        function createOption(){
+            var option = document.createElement("option");
+            option.value = currencyType;
+            option.text = currencyTypes[currencyType].name;
+            if(currencyTypes[currencyType] == myAccount.accountCurrencyType){
+                option.selected = true;
+            }
+            return option;
+        }
+    }
+
+    //-------------------------------------------------------------------------------------
+    //------ Events -----------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+    function bankAccountTypeChange(evt){
+        var accountType = bankAccountTypes[evt.value];
+        myAccount.ChangeAccountType(accountType);
+    }
+    //-------------------------------------------------------------------------------------
+
+    function accountCurrencyTypeChange(evt){
+        var currencyType = currencyTypes[evt.value];
+        myAccount.ChangeAccountCurrencyType(currencyType);
+    }
+    //-------------------------------------------------------------------------------------
+
+    function cmbDepositClick(){
+        var amount = parseFloat(txtAmount.value);
+        var currencyType = currencyTypes[selectCurrencyType.value];
+        myAccount.Deposit(amount, currencyType);
+    }
+    //-------------------------------------------------------------------------------------
+
+    function cmbWithdrawClick(){
+        var amount = parseFloat(txtAmount.value);
+        var currencyType = currencyTypes[selectCurrencyType.value];
+        myAccount.Withdraw(amount,currencyType);
+    }
+    //-------------------------------------------------------------------------------------
+
+
+</script>
+</body>
+</html>

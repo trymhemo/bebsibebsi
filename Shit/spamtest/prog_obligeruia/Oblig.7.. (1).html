@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    var currencyTypes = {
+        NOK: {value:1.00000, name: "Norske kroner", denomination: "kr" },
+        EUR: {value:0.10733, name: "Europeiske euro", denomination: "€" },
+        USD: {value:0.12652, name: "United States dollar", denomination: "$" },
+        GBP: {value:0.09550, name: "Pound sterling", denomination: "£" },
+        INR: {value:8.18624, name: "Indiske rupee", denomination: "" },
+        AUD: {value:0.16129, name: "Australienske dollar", denomination: "A$" },
+        PHP: {value:6.48595, name: "Filippinske peso", denomination: "₱" },
+        SEK: {value:1.02580, name: "Svenske kroner", denomination: "kr" },
+        CAD: {value:0.15841, name: "Canadiske dollar", denomination: "C$" },
+        THB: {value:4.18410, name: "Thai baht", denomination: "฿" }
+    };
+
+
+    var bankAccountTypes = {
+        Standard : {value: 0, name: "Brukskonto"},
+        Saving : {value: 1, name: "Sparekonto"},
+        Checking: {value: 2, name: "Kredittkonto"}
+    };
+
+
+    function createAccount(newAccountNo) {
+        var TBankAccount = {
+
+            //Attributter
+
+            accountNo: newAccountNo,
+            amount: 0,
+            oldAmount: 0,
+            accountType: bankAccountTypes.Standard,
+            accountCurrencyType: currencyTypes.NOK,
+
+            //Metoder
+            Deposit: function (newAmount,currencyType) {
+                if(currencyTypes === undefined){
+                    currencyTypes = currencyTypes.NOK;
+                }
+                console.log("Nytt innskudd på " + currencyTypes.denomination +" " + newAmount.toString() + " i " + currencyTypes.name);
+                this.oldAmount = this.amount;
+                this.amount += (newAmount * this.accountCurrencyType.value / currencyType.value);
+                this.amount += newAmount;
+                console.log("Ny saldo er nå : " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2));
+                this.checkAmount();
+            },
+            withdraw: function (decAmount,currencyType) {
+                if(currencyTypes === undefined){
+                    currencyTypes = currencyTypes.NOK;
+                }
+                console.log("Nytt uttak på " + currencyTypes.denomination +" " + decAmount.toString() + " i " + currencyTypes.name);
+                this.oldAmount = this.amount;
+                this.amount -= (decAmount * this.accountCurrencyType.value / currencyType.value);
+                this.amount -= decAmount;
+                console.log("Ny saldo er nå : " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2));
+                this.checkAmount();
+            },
+
+            checkAmount : function () {
+                if ((this.amount < 0) && (this.amount >= 0)) {
+                    console.log("Konto er fremdeles overtrukket!");
+                } else if ((this.oldAmount < 0) && (this.amount >= 0)) {
+                    console.log("Konto er ikke lenger overtrukket!");
+                } else if ((this.oldAmount >= 0) && (this.amount < 0)) {
+                    console.log("Konto er nå overtrukket!");
+                }
+            },
+            changeAccountType: function (newAccountType) {
+                console.log("Kontotype: " + this.accountType.name);
+                this.accountType = newAccountType;
+                console.log("er endret til: " + this.accountType.name);
+            },
+            changeAccountCurrencyType: function (newCurrencyType) {
+                console.log("Kontovalutta er endret fra " +"\"" + this.accountCurrencyType.name + " til " + newCurrencyType.name);
+                this.accountCurrencyType = newCurrencyType;
+                this.amount = (this.amount/(this.accountCurrencyType.value/newCurrencyType.value));
+                console.log("Ny saldo er nå : " + this.accountCurrencyType.denomination + " " + this.amount.toFixed(2));
+                //Kontovalutta er endret fra "Norske kroner" til "United State dollar"
+
+            }
+    };
+
+
+    console.log("Ny konto av type:" + TBankAccount.accountType.name + " Med kontonummer" + newAccountNo + " er opprettet.");
+    return Object.create(TBankAccount);
+    }
+
+    //--------------------------------------------------------------------------
+    //---------- Main code------------------------------------------------------
+
+
+    var myAccount = createAccount("1234 56 7890");
+
+    myAccount.Deposit(1000);
+
+    myAccount.withdraw(250);
+
+    myAccount.withdraw(1500);
+
+    myAccount.Deposit(50);
+
+    myAccount.Deposit(700);
+
+    myAccount.Deposit(2000);
+
+
+
+
+    myAccount.changeAccountType(bankAccountTypes.Saving);
+
+    myAccount.deposit(20,currencyTypes.GBP);
+    myAccount.deposit(2500,currencyTypes.USD);
+
+    myAccount.changeAccountCurrencyType(currencyTypes.GBP);
+    myAccount.deposit(3000, currencyTypes.GBP);
+
+
+
+</script>
+
+</body>
+</html>

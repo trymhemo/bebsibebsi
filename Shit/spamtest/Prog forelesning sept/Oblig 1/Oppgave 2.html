@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        window.onload = oppstart;
+
+        // getElementById fungerer kun for en id, og kan ikke gjennbrukes. Men når jeg ville bruke getElementsByClass få fikk jeg ikke noen virkning, eller feilmelding i console heller//
+        function oppstart(){
+            document.getElementById("riktig1").onclick = riktig;
+            document.getElementById("galt1").onclick = galt;
+            document.getElementById("riktig2").onclick = riktig;
+            document.getElementById("galt2").onclick = galt;
+            document.getElementById("riktig3").onclick = riktig;
+            document.getElementById("galt3").onclick = galt;
+        }
+
+        function riktig(){
+            alert("Jeg er enig med deg!");
+        }
+        function galt(){
+            alert("Så leit at vi er uenige...");
+        }
+
+    </script>
+</head>
+<body>
+    <h2>Katt er best</h2>
+    Sant<input id="riktig1" type="radio">
+    Usant<input id="galt1" type="radio"> <br/>
+
+    <h2>Pizza er godt</h2>
+    Sant<input id="riktig2" type="radio">
+    Usant<input id="galt2" type="radio"> <br/>
+
+    <h2>Spill er for tapere</h2>
+    Sant<input id="galt3" type="radio">
+    Usant<input id="riktig3" type="radio"> <br/>
+</body>
+</html>

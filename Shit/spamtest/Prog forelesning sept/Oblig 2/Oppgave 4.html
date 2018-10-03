@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 4</title>
+    <script>
+
+        window.onload = oppstart;
+
+        const NATT = 4;
+        const DAG  = 2;
+        const KVELD = 3;
+        const MORGEN = 1;
+
+        function oppstart(){
+            var tid = new Date();
+            var timer = tid.getHours();
+            var tidspunkt = 0;
+
+
+           ///////endrer bakgrunn og melding som vises //////
+
+
+            if(timer >= 5 && timer <= 9){
+                document.getElementById("utskrift").innerHTML = "God morgen!";
+                tidspunkt = MORGEN;
+                var bakgrunn = document.getElementById("bakgrunn");
+                bakgrunn.style.backgroundImage = "linear-gradient(white,orange)"
+            } else if(timer >= 10 && timer <= 18){
+                document.getElementById("utskrift").innerHTML = "God dag!";
+                tidspunkt = DAG;
+                var bakgrunn = document.getElementById("bakgrunn");
+                bakgrunn.style.backgroundImage = "linear-gradient(white,lightblue)"
+            } else if(timer >= 19 && timer <= 24){
+                document.getElementById("utskrift").innerHTML = "God kveld!";
+                tidspunkt = KVELD;
+                var bakgrunn = document.getElementById("bakgrunn");
+                bakgrunn.style.backgroundImage = "linear-gradient(gray,orange)"
+            } else if(timer >= 0 && timer <= 4){
+                document.getElementById("utskrift").innerHTML = "God natt!";
+                tidspunkt = NATT;
+                var bakgrunn = document.getElementById("bakgrunn");
+                bakgrunn.style.backgroundImage = "linear-gradient(gray,purple)"
+            }
+
+            //document.getElementById(id).style.property = new style
+
+
+        }
+
+
+    </script>
+    <style>
+        #bakgrunn{
+            width: 1400px;
+            height: 1000px;
+            background-image: linear-gradient(white, #ff8461);
+            text-align: center;
+        }
+         p{
+             font-size: 400%;
+         }
+
+        body{
+            height: 1000px;
+            width: 1400px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="bakgrunn">
+    <p id="utskrift"></p>
+</div>
+
+
+</body>
+</html>

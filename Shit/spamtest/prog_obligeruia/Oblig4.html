@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Oblig 03</title>
+</head>
+<body>
+
+<script>
+    var age = Math.floor(Math.random()*10)+11
+
+    console.log("------------------- del 1 -------------");
+    if (age >= 15)
+    {
+        console.log("Du kan komme inn på kinoen");
+    }
+    else {
+        console.log("Du er under 15 år og kan ikke komme inn på kinoen med mindre du har følge som er over 16 og du selv har fylt 13.");
+    }
+    console.log("---------------- end --------------------");
+
+    console.log("------------------- del 2 -------------");
+    if (age >= 16)
+    {
+        console.log("Du er 18 år og kan komme inn på kinoen, og du kan også ta med deg en person som er 13 år eller mer.");
+    }
+    if (age >= 15 && age <= 16)
+    {
+        console.log("Du er 15 år og kan komme inn på kinoen, men du kan ikke ta med deg en person som er yngre enn 15.");
+    }
+
+    console.log("---------------- end --------------------");
+
+    console.log("------------------- del 3 og 4 -------------");
+
+    var monthList = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"];
+    var noOfMonth = monthList.length;
+    var month = monthList[Math.floor(Math.random()*noOfMonth)];
+
+    if (month[0] !== "r" && month[1] !== "r" && month[2] !== "r" && month[3] !== "r" && month[4] !== "r" &&month[5] !== "r" && month[6] !== "r" && month[7] !== "r") {
+        console.log("Den tilfeldig valgte måneden er " + month + ". Da trenger du ikke ta ekstra D-vitaminer");
+    }
+    else {
+        console.log("Den tilfeldige valgte måneden er " + month + ". Da bør du ta ekstra D-vitaminer.");
+    }
+    if (month === "Januar") {
+        console.log(month + " har 31 dager.");
+    }
+    if (month === "Februar") {
+            console.log(month + " har 28 dager.");
+    }
+    if (month === "Mars") {
+            console.log(month + " har 28 dager.");
+    }
+    if (month === "April") {
+            console.log(month + " har 30 dager.");
+    }
+    if (month === "Mai") {
+            console.log(month + " har 31 dager.");
+    }
+    if (month === "Juni") {
+            console.log(month + " har 30 dager.");
+    }
+    if (month === "Juli") {
+            console.log(month + " har 31 dager.");
+    }
+    if (month === "August") {
+            console.log(month + " har 31 dager.");
+    }
+    if (month === "September") {
+            console.log(month + " har 30 dager.");
+    }
+    if (month === "Oktober") {
+            console.log(month + " har 31 dager.");
+    }
+    if (month === "November") {
+            console.log(month + " har 30 dager.");
+    }
+    if (month === "Desember") {
+            console.log(month + " har 31 dager.");
+    }
+
+    console.log("------------------- end -------------");
+
+
+    console.log("------------------- del 5 -------------");
+
+
+    if (age >= 16)
+    {
+        console.log("Du er 18 år og kan komme inn på kinoen, og du kan også ta med deg en person som er 13 år eller mer.");
+    }
+    if (age >= 15 && age <= 16)
+    {
+        console.log("Du er 15 år og kan komme inn på kinoen, men du kan ikke ta med deg en person som er yngre enn 15");
+    }
+    if (age < 15) {
+        console.log("Du er under 15 år og kan ikke komme inn på kinoen med mindre du har følge som er over 16 og du selv har fylt 13.");
+    }
+    if (month === "April" && age >= 13) {
+        console.log("I april pusser vi opp, men vi har en midlertidig kino i bygget ved siden av.");
+    }
+    if ((month === "Mars" || month === "Mai") && age >= 13) {
+        console.log("I mars til og med mai pusser vi opp, og denne kinoen er stengt.");
+    }
+    console.log("------------------- end -------------");
+
+</script>
+
+</body>
+</html>

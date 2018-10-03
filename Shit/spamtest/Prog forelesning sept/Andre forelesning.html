@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = oppstart;
+
+
+        function oppstart(){
+            document.getElementById("btnShow").onclick = show;
+            document.getElementById("btnPic").onclick = picSwap;
+            document.getElementById("btnColor").onclick = showColor;
+            document.getElementById("btnShowMessage").onclick = showMessage;
+
+
+            var ctx = document.getElementById("paint").getContext("2d");
+
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(400,400);
+            ctx.stroke();
+
+
+        }
+
+        function show(){
+            document.getElementById("utskrift").innerHTML = "no u";
+        }
+
+        function showColor(){
+            document.getElementById("utskrift").style.color = "gray"
+        }
+
+        function picSwap(){
+            document.getElementById("slideshow").src = "pictures/palmy.gif"
+        }
+        function showMessage(){
+            var name = document.getElementById("txtName").value;
+
+            document.getElementById("messageName").innerHTML = "Hello, " + name;
+        }
+
+
+    </script>
+    <style>
+        img{
+            width: 100px;
+            height: auto;
+        }
+        #paint{
+            border: black solid 1px;
+        }
+    </style>
+</head>
+        <p id="utskrift">Test</p>
+        <button id="btnShow" type="button">ur mom gay</button>
+        <button id="btnColor" type="button">ur mom gray</button>
+        <button id="btnPic" type="button">change mom</button>
+
+        <img id="slideshow" src="pictures/palm.gif" alt="palme">
+
+        <br>
+
+        Navn:<input id="txtName" type="text"> </input>
+        <button id="btnShowMessage" type="button">Show message</button>
+        <h1 id="messageName">Ok</h1>
+
+
+        <canvas id="paint" width="200" height="200"></canvas>
+
+
+    </body>
+</html>

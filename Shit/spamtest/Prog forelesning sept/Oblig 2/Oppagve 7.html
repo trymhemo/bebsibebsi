@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+
+            document.getElementById("bekreft").onclick = utfor;
+            document.getElementById("bekreft2").onclick = utfor2;
+            document.getElementById("bekreft3").onclick = utfor3;
+            document.getElementById("bekreft4").onclick = utfor4;
+            document.getElementById("bekreft5").onclick = utfor5;
+            document.getElementById("bekreft6").onclick = utfor6;
+            document.getElementById("bekreft7").onclick = utfor7;
+
+            function utfor(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(forste === true){
+                        forste = false
+                    } else {
+                        document.getElementById("container").innerHTML += ", " ;
+                    }
+                    document.getElementById("container").innerHTML += teller ;
+                    teller ++;
+                    }
+
+            }
+            function utfor2(){
+                var teller = 100;
+                var forste = true;
+
+                while(teller >= 0 ){
+                    if(forste === true){
+                        forste = false
+                    } else{
+                        document.getElementById("container").innerHTML += ", ";
+                    }
+                    document.getElementById("container").innerHTML += teller ;
+                    teller --;
+                }
+
+            }
+            function utfor3(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(forste === true){
+                        forste = false
+                    } else{
+                        document.getElementById("container").innerHTML += ", ";
+                    }
+                    document.getElementById("container").innerHTML += (teller /2);
+                    teller ++;
+                }
+
+            }
+
+            //Nedover fra her må testen for om noe skrives ut først nøstes inne i if testen, hvis ikke vil det skrives ut flere kommaer enn det er utskrifter av tall
+            function utfor4(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(teller % 3 === 0){
+                        if(forste === true){
+                            forste = false
+                        } else {
+                            document.getElementById("container").innerHTML += ", "
+                        }
+                    document.getElementById("container").innerHTML += teller ;
+                    }
+                    teller ++;
+                }
+
+            }
+            function utfor5(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(teller % 2 === 0){
+                        if(forste === true){
+                            forste = false
+                        } else {
+                            document.getElementById("container").innerHTML += ", "
+                        }
+                        document.getElementById("container").innerHTML += teller;
+                    }
+                    teller ++;
+                }
+
+            }
+            function utfor6(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(teller % 2 !== 0){
+                        if(forste === true){
+                            forste = false
+                        } else {
+                            document.getElementById("container").innerHTML += ", "
+                        }
+                        document.getElementById("container").innerHTML += teller ;
+                    }
+                    teller ++;
+                }
+
+            }
+
+            // må nøste if testen for om bokstaven er først ikke i både if og else for at det skal behandles likt som over
+            function utfor7(){
+                var teller = 0;
+                var forste = true;
+
+                while(teller <= 100 ){
+                    if(teller % 2 === 0){
+                        if(forste === true){
+                            forste = false
+                        } else {
+                            document.getElementById("container").innerHTML += ", "
+                        }
+                        document.getElementById("container").innerHTML += teller;
+                    } else {
+                        if(forste === true){
+                            forste = false
+                        } else {
+                            document.getElementById("container").innerHTML += ", "
+                        }
+                        document.getElementById("container").innerHTML += (teller * -1);
+                    }
+                    teller ++;
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+<button id="bekreft">Bekreft</button>
+<button id="bekreft2">Bekreft2</button>
+<button id="bekreft3">Bekreft3</button>
+<button id="bekreft4">Bekreft4</button>
+<button id="bekreft5">Bekreft5</button>
+<button id="bekreft6">Bekreft6</button>
+<button id="bekreft7">Bekreft7</button>
+<div id="container"></div>
+
+
+</body>
+</html>

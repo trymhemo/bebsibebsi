@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 3</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+            document.getElementById("registrer").onclick = brukerSjekk;
+
+            function brukerSjekk(){
+                document.getElementById("utskriftAlder").innerHTML = "";
+                document.getElementById("utskriftPassord").innerHTML = "";
+                document.getElementById("utskriftPassordBekreft").innerHTML = "";
+                document.getElementById("utskriftAlder").innerHTML = "";
+                var brukernavn = document.getElementById("brukernavn").value;
+                var passord = document.getElementById("passord").value;
+                var passordBekreftelse = document.getElementById("passordBekreftelse").value;
+                var brukerAlder = document.getElementById("brukerAlder").value;
+
+
+                //finner lengden på brukernavn og passord//
+                var brukernavnLengde = brukernavn.length;
+                var passordLengde = passord.length;
+                var passordBekreftelseLengde = passordBekreftelse.length;
+
+
+                //Henter inn dagens dato//
+
+                var today = new Date();
+                var dagValue = today.getDate();
+                var mndValue = today.getMonth() + 1;
+                var mndValueRest = mndValue % 2;
+                var aarValue = today.getFullYear();
+
+
+                //Ekstraherer data fra datoen som brukeren oppgir ved å hente ut konkrete deler av strenger, samtidig som
+                var brukerAlderDager = parseInt(brukerAlder.substring(8,11));
+                var brukerAlderMnd = parseInt(brukerAlder.substring(5,7));
+                var brukerAlderMndRest = brukerAlderMnd % 2;
+                var brukerAlderAar  = parseInt(brukerAlder.substring(0,4));
+
+                var fillTest = 1;
+
+
+                    //konverterer datoene som programmet innhenter til en felles verdi gitt i timer//
+                    brukerAlderAar = (brukerAlderAar - aarValue) * -1;
+                    if(brukerAlderAar <= 18){
+                        dagValue *= 24;
+                        brukerAlderDager *= 24;
+
+                        if(brukerAlderMndRest === 1 ){
+                            brukerAlderMnd *= (24*30)
+                            mndValue *= (24*30)
+                        }   else {
+                            brukerAlderMnd *= (24*31)
+                            mndValue *= (24*31)
+                        }
+
+                        var dagSum = dagValue + mndValue;
+                        var brukerAlderSum = brukerAlderDager + brukerAlderMnd;
+
+
+
+                        //Tester de ulike verdiene som brukeren har
+
+                        if(dagSum < brukerAlderSum){
+                            document.getElementById("utskriftAlder").innerHTML = "Du er ikke gammel nok";
+                            fillTest = fillTest - 1;
+                        }
+
+                        if (brukerAlderAar < 18){
+                            document.getElementById("utskriftAlder").innerHTML = "Du er ikke gammel nok"
+                            fillTest = fillTest - 1;
+                        }
+
+                        if (brukernavnLengde <= 0){
+                            document.getElementById("utskriftNavn").innerHTML = "Du må fylle in et brukernavn.";
+                            fillTest = fillTest - 1;
+                        }
+
+                        if (passordLengde <= 0){
+                            document.getElementById("utskriftPassord").innerHTML = "Du må fylle in er passord.";
+                            fillTest = fillTest - 1;
+                        }
+
+                        if (passordBekreftelseLengde <= 0){
+                            document.getElementById("utskriftPassordBekreft").innerHTML = "Du må bekrefte passordet ditt."
+                            fillTest = fillTest - 1;
+                        }
+
+                        if(passordLengde <=5){
+                            document.getElementById("utskriftPassord").innerHTML = "Passordet ditt er ikke langt nok.";
+                            fillTest = fillTest - 1;
+                        }
+
+                        if(passord !== passordBekreftelse){
+                            document.getElementById("utskriftPassordBekreft").innerHTML = "Passordene er ikke like!";
+                            fillTest = fillTest - 1;
+                        }
+
+
+                        if(fillTest === 1){
+                            document.getElementById("utskrift").innerHTML = "Takk for at du registrerte deg. Russisk mafia er på vei. Prosessen er iverksatt.";
+                        }
+
+                        fillTest = 1;
+
+                    }
+
+            }
+        }
+
+    </script>
+    <style>
+        /*.container{
+            display: flex;
+            width: 200px;
+        }*/
+        input{
+            width: 120px;
+        }
+        #passordTekst{
+            margin-left
+        }
+    </style>
+</head>
+<body>
+
+<div class="container"><span id="brukernavnTekst">Brukernavn</span> <input value="trymhm" id="brukernavn" type="text"><span id="utskriftNavn"></span> <br></div>
+<div class="container"><span id="passordTekst">Passord</span> <input value="sikkertpassord" id="passord" type="password"><span id="utskriftPassord"></span> <br></div>
+<div class="container"><span id="gjentaPassord">Gjenta passord</span><input value="sikkertpassord" id="passordBekreftelse" type="password"><span id="utskriftPassordBekreft"></span> <br></div>
+<div class="container"><span id="alderTekst">Alder</span><input type="date" value="2000-09-28" id="brukerAlder"><span id="utskriftAlder"></span></div>
+<br>
+<button id="registrer">Registrer</button>
+
+<p id="utskrift">Vennligst registrer deg.</p>
+</body>
+</html>

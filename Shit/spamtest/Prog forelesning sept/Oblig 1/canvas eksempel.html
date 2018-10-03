@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Testside</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart() {
+            document.getElementById("btnByttFarge").onclick = byttFarge;
+
+        }
+
+        function byttFarge() {
+
+            var farge = document.getElementById("txtFarge").value;
+
+            var ctx = document.getElementById("tegneflate").getContext("2d");
+
+            ctx.beginPath();
+            ctx.moveTo(100,50);
+            ctx.lineTo(300,200);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.rect(100,100,200,50);  //x,y,w,h1
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(200,200,100,0,Math.PI*2);
+            ctx.fillStyle = farge;
+            ctx.strokeStyle = "blue";
+            ctx.fill();
+            ctx.stroke();
+
+        }
+
+
+    </script>
+    <style>
+        #tegneflate {
+            border-style: solid;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="tegneflate" width="400" height="400"></canvas>
+<input type="text" id="txtFarge" value="yellow"></input>
+<button type="button" id="btnByttFarge">Bytt</button>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Testside</title>
+    <script>
+
+        window.onload = oppstart;
+
+        var tall = 0;
+        var okning = 8;
+        var verdi = 0.01;
+
+        function oppstart() {
+
+            setInterval(tegn,20);
+        }
+
+        function tegn() {
+
+            var ctx = document.getElementById("tegneflate").getContext("2d");
+
+            ctx.beginPath();
+            ctx.rect(0,0,400,400);
+            ctx.fillStyle="white";
+            ctx.globalAlpha = 0.4;
+            ctx.fill();
+
+
+            ctx.beginPath();
+            ctx.globalAlpha = 1.0;
+            ctx.moveTo(0,tall);
+            ctx.lineTo(tall,0);
+            ctx.stroke();
+
+
+            tall = tall + (( okning ^ 2 )( verdi * verdi * verdi ) / 5;
+
+            if(tall >= 800) {
+                okning = -8;
+            }
+
+            if(tall < 1) {
+                okning = +8;
+            }
+
+
+        }
+
+
+    </script>
+    <style>
+        #tegneflate {
+            border-style: solid;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="tegneflate" width="400" height="400"></canvas>
+<!--input type="text" id="txtFarge" value="yellow"></input>
+<button type="button" id="btnByttFarge">Bytt</button-->
+</body>
+</html>

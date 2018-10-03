@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Spådom</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+            document.getElementById("outerwrapper").onclick = utfor;
+
+            var svar1 ="Det kan hende.";
+            var svar2 ="Jeg ville ikke satset på det.";
+            var svar3 ="Sannsynligheten er der.";
+            var svar4 ="Det ville du likt å vite.";
+            var svar5 ="Like sannsynlig som at du at du blir gift.";
+            var svar6 ="Sannsynligheten er der.";
+            var svar7 ="Ja.";
+            var svar8 ="Nei.";
+            var svar9 ="Tja..";
+            var svar10 ="Kanskje.";
+            var svar11 ="Nå kan du lure.";
+            var svar12 ="For et dumt spørsmål.";
+            var svar13 ="Det kan du regne med.";
+            var svar14 ="Når mennesker kan gå på Venus.";
+            var svar15 ="Spør Google.";
+            var svar16 ="Uten tvil.";
+            var svar17 ="Det vil alltid stemme.";
+            var svar18 ="Mest sannsynlig ikke.";
+            var svar19 ="...";
+            var svar20 ="Spør Jenny.";
+
+            var svart = ""
+
+
+
+            function utfor(){
+                var utvalgtTall = Math.random()*100;
+
+
+                if(utvalgtTall > 95 && svart !== svar1){
+                    document.getElementById("utskrift").innerHTML = svar1;
+                    svart = svar1;
+                } else if(utvalgtTall > 90 && svart !== svar2){
+                    document.getElementById("utskrift").innerHTML = svar2;
+                    svart = svar2;
+                } else if(utvalgtTall > 85 && svart !== svar3){
+                    document.getElementById("utskrift").innerHTML = svar3;
+                    svart = svar3;
+                } else if(utvalgtTall > 80 && svart !== svar4){
+                    document.getElementById("utskrift").innerHTML = svar4;
+                    svart = svar4;
+                }else if(utvalgtTall > 75 && svart !== svar5){
+                    document.getElementById("utskrift").innerHTML = svar5;
+                    svart = svar5;
+                }else if(utvalgtTall > 70 && svart !== svar6){
+                    document.getElementById("utskrift").innerHTML = svar6;
+                    svart = svar6;
+                }else if(utvalgtTall > 65 && svart !== svar7){
+                    document.getElementById("utskrift").innerHTML = svar7;
+                    svart = svar7;
+                }else if(utvalgtTall > 60 && svart !== svar8){
+                    document.getElementById("utskrift").innerHTML = svar8;
+                    svart = svar8;
+                }else if(utvalgtTall > 55 && svart !== svar9){
+                    document.getElementById("utskrift").innerHTML = svar9;
+                    svart = svar9;
+                }else if(utvalgtTall > 50 && svart !== svar10){
+                    document.getElementById("utskrift").innerHTML = svar10;
+                    svart = svar10;
+                }else if(utvalgtTall > 45 && svart !== svar11){
+                    document.getElementById("utskrift").innerHTML = svar11;
+                    svart = svar11;
+                }else if(utvalgtTall > 40 && svart !== svar12){
+                    document.getElementById("utskrift").innerHTML = svar12;
+                    svart = svar12;
+                }else if(utvalgtTall > 35 && svart !== svar13){
+                    document.getElementById("utskrift").innerHTML = svar13;
+                    svart = svar13;
+                }else if(utvalgtTall > 30 && svart !== svar14){
+                    document.getElementById("utskrift").innerHTML = svar14;
+                    svart = svar14;
+                }else if(utvalgtTall > 25 && svart !== svar15){
+                    document.getElementById("utskrift").innerHTML = svar15;
+                    svart = svar15;
+                }else if(utvalgtTall > 20 && svart !== svar16){
+                    document.getElementById("utskrift").innerHTML = svar16;
+                    svart = svar16;
+                }else if(utvalgtTall > 15 && svart !== svar17){
+                    document.getElementById("utskrift").innerHTML = svar17;
+                    svart = svar17;
+                }else if(utvalgtTall > 10 && svart !== svar18){
+                    document.getElementById("utskrift").innerHTML = svar18;
+                    svart = svar18;
+                }else if(utvalgtTall > 5 && svart !== svar19){
+                    document.getElementById("utskrift").innerHTML = svar19;
+                    svar = svar19;
+                }else if(utvalgtTall > 0 && svart !== svar20){
+                    document.getElementById("utskrift").innerHTML = svar20;
+                    svar = svar20;
+                }
+            }
+        }
+
+    </script>
+
+    <style>
+        #outerwrapper{
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 5px solid black;
+        }
+
+
+        #middlewrapper{
+            margin-top: 125px;
+            margin-left: 125px;
+            border: solid 3px black;
+            border-radius: 50%;
+            width:200px;
+            height:200px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #center{
+            padding: 30px;
+            margin-top: 36px;
+
+        }
+
+        ::selection {
+            background: rgba(0, 37, 146, 0.01);
+        }
+
+        p{
+            font-size: 95%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="outerwrapper"><div id="middlewrapper"><div class="innerwrapper"><div id="center"><p id="utskrift">Din spådom vises her</p></div></div></div></div>
+
+
+</body>
+</html>

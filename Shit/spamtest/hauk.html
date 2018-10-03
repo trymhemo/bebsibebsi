@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hauk</title>
+    <script>
+
+
+        window.onload = oppstart
+
+        function oppstart(){
+            document.getElementById("bekreft").onclick = lagKnapp;
+
+            var endring = 0;
+
+            function lagKnapp(){
+                document.getElementById("knappeRom").innerHTML = "<button id=&quotknapp2&quot>Knapp</button>";
+                endring += 1;
+            }
+
+            if(endring === 1){
+                document.getElementById("knappeRom").innerHTML = "<button id=&quotknapp2&quot>Knapp</button><button id=&quotknapp3&quot></button>";
+                document.getElementById("knapp2").onclick = lagKnapp2;
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <p>Trykk på knappen for å lage en til knapp</p>
+    <button id="bekreft">Bekreft</button>
+    <div id="knappeRom"></div>
+</body>
+</html>

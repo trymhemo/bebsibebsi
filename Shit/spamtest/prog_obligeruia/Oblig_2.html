@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Oblig2</title>
+    </head>
+        <body>
+
+        <script>
+
+                onload = function() {
+                    // Skal skrive til konsoll loggen.
+
+                    var textFirstJscript = "Mitt første JavaScript program!";
+
+                    console.log(textFirstJscript);
+                };
+
+                onclick = function() {
+                    // skal regne ut (((3+5)*12)/32)^2 og skrive til konsoll loggen.
+
+                    var textVar1 = "Svaret er ";
+                    var textVar2 = "!";
+
+                    var numberVar1 = 3;
+                    var numberVar2 = 5;
+                    var numberVar3 = 12;
+                    var numberVar4 = 32;
+
+                    var calculation1 = (((numberVar1 + numberVar2) * numberVar3) / numberVar4);
+                    var calculation2 = Math.pow(calculation1,2);
+
+                    console.log(textVar1 + calculation2 + textVar2);
+
+                };
+
+        </script>
+
+        </body>
+    </html>

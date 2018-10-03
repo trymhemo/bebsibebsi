@@ -1,0 +1,135 @@
+body{
+    background-image: url("bakgrunngrønn8.png");
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidewrapper{
+    display: block;
+    background-color: rgba(46, 46, 46, 0.51);
+    height: 900px;
+    margin: 0 auto;
+    width: 1000px;
+}
+header{
+    margin: 0 auto;
+    display: block;
+    background-color: rgba(88, 88, 88, 0.16);
+    border-top: solid;
+}
+
+footer{
+    display: block;
+    background-color: rgba(146, 146, 146, 0.16);
+    margin: 0 auto;
+}
+
+aside{
+    margin: 0 auto;
+}
+
+figure{
+    display: inline-block;
+}
+
+figure img{
+    width: 500px;
+    height: 500px;
+
+}
+
+figcaption{
+    width: 300px;
+    height: auto;
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+    display: inline-block;
+    padding: 5px;
+
+}
+
+
+ul li a{
+    font-size: 120%;
+    background-color: #f02624;
+    text-decoration: none;
+    color: #000000;
+    letter-spacing: 0.05em;
+    padding: 6px;
+    display: inline;
+}
+
+li a:hover{
+    text-shadow: 0px 0px 30px #ffffff;
+    background-color: #f02624;
+    color: #ffffff;
+    transition: all 1.2s ease 0s;
+
+}
+
+img{
+    width: 500px;
+    height: 500px;
+}
+
+#imgborder{
+    display: block;
+    width: 500px;
+    height:500px;
+    border: solid 5px red;
+}
+
+p{
+    color: #000000;
+    background-color:#f02624;
+    display: inline-block;
+    padding: 15px;
+}
+
+.artikkelinnhold{
+    font-size: 80%;
+    display: inline-block;
+    width: 450px;
+}
+
+.othertext{
+    background-color:#f02624;
+    padding: 10px;
+    border: none;
+    color: black;
+    text-transform: capitalize;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 200%;
+
+}
+
+.othertext2{
+    background-color:#f02624;
+    padding: 10px;
+    border: none;
+    color: black;
+    text-transform: capitalize;
+
+}
+
+
+figcaption{
+    color: white;
+}
+
+h1, h2{
+    display: inline-block;
+    padding: 7px 15px 7px 15px;
+    text-transform: capitalize;
+    letter-spacing: 0.1em;
+    background-color:#f02624;
+    color: black;
+    text-decoration-line: line-through;
+    width: auto;
+    margin: 0 auto;
+}

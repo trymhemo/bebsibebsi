@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+                document.getElementById("registrer").onclick = brukerSjekk;
+
+                function brukerSjekk(){
+                    var brukernavn = document.getElementById("brukernavn").value;
+                    var passord = document.getElementById("passord").value;
+
+                    var brukernavnLengde = brukernavn.length;
+                    var passordLengde = passord.length;
+
+                    if (brukernavnLengde <= 0){
+                        document.getElementById("utskrift").innerHTML = "Brukernavnet ditt er ikke langt nok";
+                    } else if(passordLengde <= 0){
+                        document.getElementById("utskrift").innerHTML = "Passordet ditt er ikke langt nok";
+                    } else {
+                        document.getElementById("utskrift").innerHTML = "Takk for at du registrerte deg. Russisk mafia er på vei. Prosessen er iverksatt.";
+                    }
+                }
+        }
+
+    </script>
+</head>
+<body>
+
+<input id="brukernavn" type="text"><p>Brukernavn</p>
+<input id="passord" type="password"><p>Passord</p>
+<button id="registrer">Registrer</button>
+<br>
+<p id="utskrift">Vennligst registrer deg.</p>
+</body>
+</html>

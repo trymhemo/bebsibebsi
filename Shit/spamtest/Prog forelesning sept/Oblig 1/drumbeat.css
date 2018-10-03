@@ -1,0 +1,38 @@
+img{
+    border: groove 5px grey;
+}
+
+figcaption{
+    font-size: 70%;
+    display: block;
+    background-image: linear-gradient(#dcdcdc, white, white, #dcdcdc);
+    border: outset 1px;
+    width: 107px;
+}
+
+button{
+    color: #fff !important;
+    text-transform: uppercase;
+    background: #000000;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+}
+button:hover{
+    background: #434343;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    text-shadow: 0px 0px 50px white;
+    transition: all 0.4s ease 0.2s;
+}
+}
+
+figure{
+    margin-left: 100px;
+}
+
+p{
+    margin-left: 18px;
+}

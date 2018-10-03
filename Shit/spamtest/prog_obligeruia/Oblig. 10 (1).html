@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="txtSomeText">Skriv inn noe tekst</label>
+<br/>
+<input id="txtSomeText">
+<br/>
+<label for="txtCount">Repiter:</label>
+<br/>
+<input id="txtCount" value="20" size="4">
+<button id="cmbShowText" onclick="cmbShowTextClick()">Kopi</button>
+<br/>
+<label for="txtOutPut">Resultat:</label>
+<br/>
+<textarea id="txtOutPut" rows="20" cols="20"></textarea>
+
+</body>
+<script>
+
+    // variabel for brukerens tekst
+    var txtSomeText = document.getElementById("txtSomeText");
+    // variabel for antall ganger vi skal kopiere teksten
+    var txtCount = document.getElementById("txtCount");
+    // variabel for tekstfeltet som viser resultatet.
+    var txtOutPut = document.getElementById("txtOutPut");
+
+    function cmbShowTextClick(){
+    // Teksten som skal kopieres
+        var originalText = txtSomeText.value;
+    // Hvor mange ganger vi skal kopiere teksten
+        var count = parseInt(txtCount.value);
+    // Variabel for resultatet, settes til en tom streng
+        var copyText = "";
+    }
+
+
+    function cmbShowTextClick(){
+    // Teksten som skal kopieres
+        var originalText = txtSomeText.value;
+    // Hvor mange ganger vi skal kopiere teksten
+        var count = parseInt(txtCount.value);
+    // Variabel for resultatet, settes til en tom streng
+        var copyText = "";
+        console.log(count);
+        console.log(isNaN(count));
+        if(isNaN(count)) {
+            alert("Dette er ikke et tall din jævel!")
+        }
+        else{
+
+            for (var i = 1; i <= count; i++) {
+
+                copyText += originalText + "\r\n";
+            }
+        }
+
+
+        txtOutPut.value = copyText; // Viser resultatet av den kopierte teksten
+
+    }
+
+    window.onload=function(e)
+// Sett original tekst til "Dett er en test"
+    {
+        txtSomeText.value="Dette er en test";
+        txtCount.value=20
+// Sett repeter til 20
+    }
+
+
+
+
+
+
+</script>
+
+</html>

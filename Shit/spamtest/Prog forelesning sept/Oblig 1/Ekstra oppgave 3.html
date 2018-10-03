@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beat</title>
+    <link href="drumbeat.css" rel="stylesheet" type="text/css">
+    <audio src="hihat.mp3" id="hihat"></audio>
+    <audio src="kick.wav" id="kick"></audio>
+    <audio src="snare.wav" id="snare"></audio>
+    <script>
+
+        window.onload = oppstart
+
+        var hihataudio = document.getElementById("hihat");
+        var kickaudio = document.getElementById("kick");
+        var snareaudio = document.getElementById("snare");
+
+        function oppstart(){
+            document.getElementById("spillBeat").onclick = spillBeat;
+            document.getElementById("stopBeat").onclick = stopBeat;
+            document.getElementById("hihatBilde").onclick = spillHihat;
+            document.getElementById("snareBilde").onclick = spillSnare;
+            document.getElementById("kickBilde").onclick = spillKick;
+
+            document.addEventListener('keydown', function(event) {
+                if(event.keyCode == 70){
+                    kickaudio.play();
+                    setTimeout(borderKick,1)
+                    setTimeout(borderKickFjern,160)
+
+                    function borderKick(){
+                        document.getElementById("kickBilde").style.border = "solid";
+                    }
+                    function borderKickFjern(){
+                        var fjerneStyleKick = document.getElementById("kickBilde");
+                        fjerneStyleKick.style.border = null;
+                    }
+                    }
+                else if(event.keyCode == 71){
+                    snareaudio.play();
+                    setTimeout(borderSnare,1)
+                    setTimeout(borderSnareFjern,160)
+
+                    function borderSnare(){
+                        document.getElementById("snareBilde").style.border = "solid";
+                    }
+                    function borderSnareFjern(){
+                        var fjerneStyleSnare = document.getElementById("snareBilde");
+                        fjerneStyleSnare.style.border = null;
+                    }
+                }
+                else if(event.keyCode == 72){
+                    hihataudio.play();
+                    setTimeout(borderHihat,1)
+                    setTimeout(borderHihatFjern,160)
+
+                    function borderHihat(){
+                        document.getElementById("hihatBilde").style.border = "solid";
+                    }
+                    function borderHihatFjern(){
+                        var fjerneStyleHihat = document.getElementById("hihatBilde");
+                        fjerneStyleHihat.style.border = null;
+                    }
+                }
+            });
+        }
+
+        function spillHihat(){
+            hihataudio.play();
+            setTimeout(borderHihat,1)
+            setTimeout(borderHihatFjern,160)
+
+            function borderHihat(){
+                document.getElementById("hihatBilde").style.border = "solid";
+            }
+            function borderHihatFjern(){
+                var fjerneStyleHihat = document.getElementById("hihatBilde");
+                fjerneStyleHihat.style.border = null;
+            }
+        }
+        function spillSnare(){
+            snareaudio.play();
+            setTimeout(borderSnare,1)
+            setTimeout(borderSnareFjern,160)
+
+            function borderSnare(){
+                document.getElementById("snareBilde").style.border = "solid";
+            }
+            function borderSnareFjern(){
+                var fjerneStyleSnare = document.getElementById("snareBilde");
+                fjerneStyleSnare.style.border = null;
+            }
+        }
+        function spillKick(){
+            kickaudio.play();
+            setTimeout(borderKick,1)
+            setTimeout(borderKickFjern,160)
+
+            function borderKick(){
+                document.getElementById("kickBilde").style.border = "solid";
+            }
+            function borderKickFjern(){
+                var fjerneStyleKick = document.getElementById("kickBilde");
+                fjerneStyleKick.style.border = null;
+            }
+        }
+
+        //function myFunction(event) {
+        //    var x = event.keyCode;
+        //    if (x == 27) {  // 27 is the ESC key
+        //        alert ("You pressed the Escape key!");
+        //    }
+        //}
+
+        function spillBeat() {
+            var hihat = setInterval(hihat,333.3333);
+            var kick = setInterval(kick,666.6666);
+            var snare = setInterval(snare, 1333.333);
+
+            function kick(){
+                kickaudio.play();
+                setTimeout(borderKick,1)
+                setTimeout(borderKickFjern,160)
+
+                function borderKick(){
+                    document.getElementById("kickBilde").style.border = "solid";
+                }
+                function borderKickFjern(){
+                    var fjerneStyleKick = document.getElementById("kickBilde");
+                    fjerneStyleKick.style.border = null;
+                }
+            }
+
+            function snare(){
+                snareaudio.play();
+                setTimeout(borderSnare,1)
+                setTimeout(borderSnareFjern,160)
+
+                function borderSnare(){
+                    document.getElementById("snareBilde").style.border = "solid";
+                }
+                function borderSnareFjern(){
+                    var fjerneStyleSnare = document.getElementById("snareBilde");
+                    fjerneStyleSnare.style.border = null;
+                }
+            }
+
+            function hihat(){
+                hihataudio.play();
+                setTimeout(borderHihat,1)
+                setTimeout(borderHihatFjern,160)
+
+                function borderHihat(){
+                    document.getElementById("hihatBilde").style.border = "solid";
+                }
+                function borderHihatFjern(){
+                    var fjerneStyleHihat = document.getElementById("hihatBilde");
+                    fjerneStyleHihat.style.border = null;
+                }
+            }
+
+            //fungerer ikke
+            function stopBeat(){
+                clearInterval(hihat);
+                clearInterval(kick);
+                clearInterval(snare);
+            }
+        }
+
+
+
+    </script>
+    <style>
+        img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button id="spillBeat">
+        Start beat.
+    </button>
+    <button id="stopBeat">
+        <a href="Ekstra%20oppgave%203.html">Stopp beat.</a>
+    </button>
+    <p>Spill ferdig beat eller spill selv :)</p>
+    <br/>
+    <figure>
+    <img id="hihatBilde" src="hihat.jpg" alt="hihat">
+        <figcaption>Trykk på H eller bildet.</figcaption>
+    </figure>
+    <figure>
+    <img id="snareBilde" src="snare.jpg" alt="snare">
+        <figcaption>Trykk på G eller bildet.</figcaption>
+    </figure>
+    <figure>
+    <img id="kickBilde" src="bassdrum.jpg" alt="kick">
+        <figcaption>Trykk på F eller bildet.</figcaption>
+    </figure>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <script>
+
+        window.onload = oppstart;
+
+        function oppstart(){
+
+            document.getElementById("bekreft").onclick = utfor;
+
+            function utfor(){
+                document.getElementById("bekreft").innerHTML = "Hey, that's pretty good"
+                var teller = 0;
+                var tekst = document.getElementById("tekst").value;
+                var multipliser = parseInt(document.getElementById("multipliser").value);
+
+                var forste = true;
+
+                // en løkke som skriver ut ordet så mange ganger som oppgitt, men kan også skille på hvilket ord som kommer først ved å ikke sette komma forran det//
+                while (teller <= multipliser){
+                    if(forste === true){
+                        forste = false
+                    } else {
+                        document.getElementById("container").innerHTML += ", ";
+                    }
+                    document.getElementById("container").innerHTML += tekst;
+
+                        teller ++;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<p>Skriv inn et ord, og deretter hvor mange ganger du ønsker å skrive det ut :)</p>
+Ord<input id="tekst" type="text">
+Tall<input id="multipliser" type="number">
+<button id="bekreft">Bekreft</button>
+<div id="container"></div>
+
+</body>
+</html>

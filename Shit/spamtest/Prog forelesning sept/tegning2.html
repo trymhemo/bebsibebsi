@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Testside</title>
+    <script>
+
+        window.onload = oppstart;
+
+        var tall = 0;
+        var tall2 = 0;
+        var tall3 = 1;
+        var tall4 = 2.1;
+
+        function oppstart() {
+
+            setInterval(tegn,33);
+
+        }
+
+        function tegn() {
+            var ctx = document.getElementById("tegneflate").getContext("2d");
+
+            ctx.beginPath();
+            ctx.moveTo(10-tall,tall+2);
+            ctx.lineTo(500,500-tall);
+            ctx.stroke();
+
+            tall2 = tall2 + 0.01 - ((tall3 * tall3)/100000)+((tall3 * tall3 * tall3)/100000000000);
+            tall3 = tall3 + 0.5;
+            tall4 = tall4 + 0.01;
+            tall = tall + 30/tall4 * tall2;
+
+        }
+
+
+    </script>
+    <style>
+        #tegneflate {
+            border-style:solid;
+        }
+    </style>
+</head>
+<body>
+<canvas id="tegneflate" width="500" height="500"></canvas>
+</body>
+</html>

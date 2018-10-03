@@ -1,0 +1,42 @@
+
+.grid{
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-template-rows: 350px 350px 350px;
+    grid-gap: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(165, 90, 232, 0.55);
+    box-shadow: 0 0.1em 0 0 rgba(0,0,0,0.1);
+    grid-template-areas:
+            "head head head"
+            "main main fig"
+            "foot foot foot";
+}
+
+
+.heading{
+    grid-area: head;
+    height: 200px;
+}
+
+main{
+    grid-area: main;
+    height: 200px;
+}
+
+figure{
+    grid-area: fig;
+}
+
+footer{
+    grid-area: foot;
+}
+
+
+
+
+
+
+
